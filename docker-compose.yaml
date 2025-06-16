@@ -6,7 +6,7 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
-      - /app/vendor
+      - laravel-vendor:/app/vendor
     depends_on:
       database:
         condition: service_healthy
@@ -48,3 +48,4 @@ services:
       - db-data:/var/lib/mysql
 volumes:
   db-data:
+  laravel-vendor:
