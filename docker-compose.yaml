@@ -1,0 +1,50 @@
+services:
+  app:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - /app/vendor
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_DATABASE: hi-world
+      DB_USERNAME: user
+      DB_PASSWORD: 12345
+    command: >
+      /bin/sh -c "
+        echo 'Waiting for MySQL...';
+        until php -r 'try { new PDO(\"mysql:host=database;port=3306\", \"user\", \"12345\"); } catch (Exception \$e) { exit(1); }'; do
+          sleep 2;
+        done;
+        php artisan key:generate;
+        php artisan migrate --force;
+        php artisan serve --host=0.0.0.0 --port=8000
+      "
+
+  database:
+    image: mysql:8.0
+    container_name: database
+    environment:
+      - MYSQL_DATABASE=hi-world
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=12345
+    ports:
+      - 33061:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - db-data:/var/lib/mysql
+volumes:
+  db-data:
