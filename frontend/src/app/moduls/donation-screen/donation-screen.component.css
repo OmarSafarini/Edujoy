@@ -1,0 +1,110 @@
+.donation-screen-background-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  /* ضيف الي رح تحتاجه بخصوص نوع الخط*/
+}
+
+.donation-screen-Form {
+  background-color: white;
+  padding: 2.5em 3em;
+  border-radius: 1em;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.donation-screen-Form label {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #500b85;
+  margin-bottom: 0.3em;
+}
+
+.donation-screen-Form small {
+  font-size: 0.95em;
+  color: #666;
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+.donation-screen-Form input {
+  width: 87%;
+  border: 2px solid #ccc;
+  border-radius: 0.5em;
+  padding: 0.9em 1em;
+  font-size: 1em;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.donation-screen-Form input:focus,
+.donation-screen-Form input:hover {
+  background-color: #f0f0f0;
+  border-color: #500b85;
+  outline: none;
+}
+
+.donation-screen-Form input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.donation-screen-date input {
+  width: 40%;
+  display: inline-block;
+}
+
+.donation-screen-Form input[type="submit"] {
+  background: linear-gradient(to right, #500b85, #03011c);
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2em;
+  border: none;
+  transition: 0.3s;
+  width: 65%;          
+  align-self: center; 
+  padding: 0.9em 1em;
+  margin-top: 1em;
+}
+
+
+.donation-screen-Form input[type="submit"]:hover {
+  transform: scale(1.03);
+  color : rgb(106, 106, 106);
+  background: linear-gradient(to right, #6a28a0, #2c1e3e);
+}
+
+#Button-Return-To-Main {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #500b85;
+  margin: 0 auto;          
+  margin-top: 0.8em;
+  transition: 0.3s;
+}
+
+#Button-Return-To-Main:hover {
+  color: #2e0854;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .donation-screen-Form {
+    padding: 2em 1.5em;
+  }
+
+  .donation-screen-date input {
+    width: 30%;
+  }
+}
