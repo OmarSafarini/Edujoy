@@ -1,27 +1,145 @@
 .donation-screen-background-container {
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 1rem;
   box-sizing: border-box;
-  /* ضيف الي رح تحتاجه بخصوص نوع الخط*/
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  align-items: start;
+}
+
+.card-container {
+  position: relative;
+  width: fit-content;
+  margin-bottom: 2em;
+}
+
+.card-preview {
+  background: linear-gradient(135deg, #6043b0, #2c1e3e);
+  color: white;
+  border-radius: 1em;
+  padding: 2.3em 3.6em 2.3em 2.5em;
+  width: 100%;
+  max-width: 400px;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-preview.front {
+  z-index: 2;
+  padding: 50px 50px 55px 50px ;
+}
+
+.bank-logo {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  width: 30px;
+  opacity: 0.95;
+}
+
+.card-preview.back-cvv {
+  position: absolute;
+  top: 195px;
+  left: 75px;
+  z-index: 1;
+  background: linear-gradient(135deg, #dddcdc, #f3f4f6);
+  color: #000;
+  border-radius: 1em;
+  padding: 30px 0px 25px 50px ;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.card-preview .card-number {
+  font-size: 1.4em;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+}
+
+.card-preview .card-name-date {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+}
+
+.paypal-logo {
+  bottom: 1.2em;
+  right:1.5em;
+  width: 60px;
+  opacity: 0.9;
+  position: absolute;
+}
+
+.cvv-box {
+  background: #fff;
+  color: #000;
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  font-weight: bold;
+  width: fit-content;
+  margin-top: 3.5em;
 }
 
 .donation-screen-Form {
   background-color: white;
-  padding: 2.5em 3em;
+  padding: 2em 1.5em;
   border-radius: 1em;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 1.25em;
+  gap: 1.5em;
+  font-size: 0.95em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.form-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em 2em;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.expiry-fields {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.expiry-submit-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin-top: 0.5em;
+}
+
 .donation-screen-Form label {
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   color: #500b85;
   margin-bottom: 0.3em;
@@ -35,7 +153,7 @@
 }
 
 .donation-screen-Form input {
-  width: 87%;
+  width: 100%;
   border: 2px solid #ccc;
   border-radius: 0.5em;
   padding: 0.9em 1em;
@@ -55,13 +173,8 @@
   font-style: italic;
 }
 
-.donation-screen-date input {
-  width: 40%;
-  display: inline-block;
-}
-
 .donation-screen-Form input[type="submit"] {
-  background: linear-gradient(to right, #500b85, #03011c);
+  background: linear-gradient(135deg, #6043b0, #2c1e3e);
   color: white;
   font-size: 1em;
   font-weight: bold;
@@ -69,28 +182,25 @@
   border-radius: 2em;
   border: none;
   transition: 0.3s;
-  width: 65%;          
-  align-self: center; 
+  width: 70%;
   padding: 0.9em 1em;
-  margin-top: 1em;
+  margin: 0 auto;
 }
-
 
 .donation-screen-Form input[type="submit"]:hover {
   transform: scale(1.03);
-  color : rgb(106, 106, 106);
+  color: rgb(106, 106, 106);
   background: linear-gradient(to right, #6a28a0, #2c1e3e);
 }
 
 #Button-Return-To-Main {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   font-weight: bold;
   text-decoration: none;
   color: #500b85;
-  margin: 0 auto;          
-  margin-top: 0.8em;
+  margin: 0 auto;
   transition: 0.3s;
 }
 
@@ -98,13 +208,39 @@
   color: #2e0854;
   text-decoration: underline;
 }
-
-@media (max-width: 768px) {
-  .donation-screen-Form {
-    padding: 2em 1.5em;
-  }
-
-  .donation-screen-date input {
-    width: 30%;
-  }
+.magnetic-strip {
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  width: 100%;
+  height: 2.2em;
+  background: #111;
+  border-radius: 6px 6px 0 0;
 }
+.dummy-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  margin-top: 2.5em;
+  margin-bottom: 1.5em;
+}
+
+.dummy-lines .line {
+  height: 6px;
+  background-color: #bbb;
+  border-radius: 3px;
+  opacity: 0.6;
+}
+
+.dummy-lines .short {
+  width: 40%;
+}
+
+.dummy-lines .medium {
+  width: 50%;
+}
+
+.dummy-lines .long {
+  width: 80%;
+}
+

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-main-screen',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule , NavbarComponent , CommonModule],
   templateUrl: './main-screen.component.html',
   styleUrl: './main-screen.component.css'
 })

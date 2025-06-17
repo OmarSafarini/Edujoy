@@ -6,12 +6,13 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-donation-screen',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule], 
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './donation-screen.component.html',
   styleUrls: ['./donation-screen.component.css']
 })
 export class DonationScreenComponent implements OnInit {
   donationForm!: FormGroup;
+  cvvFocused = false;
 
   constructor(private fb: FormBuilder) {}
 
@@ -24,14 +25,17 @@ export class DonationScreenComponent implements OnInit {
       expiryYear: ['', [Validators.required, Validators.pattern(/^\d{4}$/)]],
       amount: ['', [Validators.required, Validators.pattern(/^[1-9]\d*$/)]],
     });
+
+    this.donationForm.get('cvv')?.valueChanges.subscribe((val: string) => {
+      this.cvvFocused = val?.trim()?.length > 0;
+    });
   }
 
   onSubmit(): void {
     if (!this.donationForm.valid) {
       alert('The fields should be all completed');
-    }
-    else{
-      console.log('Donation data : ' , this.donationForm.value);
+    } else {
+      console.log('Donation data:', this.donationForm.value);
     }
   }
 
