@@ -20,8 +20,8 @@ class VideoHistoryController extends Controller
                     $q->select('id', 'title');
                 }
             ])
-            ->order_by('updated_at')
-            ->get(['id', 'is_completed', 'video_id', 'video_id'])
+            ->orderBy('updated_at', 'desc')
+            ->get(['id', 'is_completed', 'video_id', 'video_id']);
 
         return response()->json($data);
     }
