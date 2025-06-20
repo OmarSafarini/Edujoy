@@ -1,0 +1,21 @@
+<div class="sidebar py-3">
+  <h3>{{ course?.name }}</h3>
+  <div class="sidebar-body">
+    <div *ngFor="let lesson of course?.lessons">
+      <hr />
+      <strong> الدرس: {{ lesson.name }}</strong>
+      <ul>
+        <li *ngFor="let video of lesson.videos">
+          <a
+            class="video-item p-3 my-3"
+            [class.active]="video.id === selectedVideoId"
+            [routerLink]="['/video', video.id]"
+            [queryParams]="{ lessonId: lesson.id }"
+          >
+            {{ video.title }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

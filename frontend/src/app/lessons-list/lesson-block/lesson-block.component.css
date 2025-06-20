@@ -1,0 +1,13 @@
+
+.lesson-item{
+    background-color: #ffffff;
+}
+
+.lesson-collapse{
+    width: 100%;
+}
+
+.video-link{
+    text-decoration: none;
+    list-style: none;
+}
