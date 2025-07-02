@@ -1,0 +1,39 @@
+<div class="donation-screen-background-container">
+  <form [formGroup]="donationForm" class="donation-screen-Form" (ngSubmit)="onSubmit()">
+    
+    <div class="donation-screen-cardnumber">
+      <label>Card Number</label>
+      <small>Enter the 16-digit card number on the card</small>
+      <input type="text" formControlName="cardNumber" placeholder="xxxx - xxxx - xxxx - xxxx"
+             maxlength="19" (input)="formatCardNumber($event)" />
+    </div>
+
+    <div class="donation-screen-name">
+      <label>Card Number Holder</label>
+      <small>Enter name card holder on the card</small>
+      <input type="text" formControlName="donorName" placeholder="Donor Name" />
+    </div>
+
+    <div class="donation-screen-cvv">
+      <label>CVV Number</label>
+      <small>Enter the 3 or 4 digits number on the card</small>
+      <input type="text" formControlName="cvv" placeholder="3-digit code is on the back of the card" maxlength="4" />
+    </div>
+
+    <div class="donation-screen-date">
+      <label>Expiry Date</label>
+      <small>Enter the expiration date of the card</small>
+      <input type="text" formControlName="expiryMonth" placeholder="MM" maxlength="2" />
+      <span>/</span>
+      <input type="text" formControlName="expiryYear" placeholder="YYYY" maxlength="4" />
+    </div>
+
+    <div class="donation-screen-amount">
+      <label>Amount</label>
+      <input type="text" formControlName="amount" placeholder="Money Amount" />
+    </div>
+
+    <input type="submit" value="Pay Now" id="Payment" />
+    <a routerLink="/" id="Button-Return-To-Main">Back to Main Screen</a>
+  </form>
+</div>
