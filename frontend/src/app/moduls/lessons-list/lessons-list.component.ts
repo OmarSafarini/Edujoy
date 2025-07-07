@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LessonBlockComponent } from './lesson-block/lesson-block.component';
-import { Course } from '../models/course.model';
-import { LessonsService } from '../services/lessons.service';
+import { Course } from '../../models/course.model';
+import { LessonsService } from '../../services/lessons.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

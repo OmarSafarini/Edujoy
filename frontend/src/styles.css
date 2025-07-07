@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --bookColor:#6C4AB6;
+  --paperColor1:#f6eee3;
+  --paperColor2:#eee7d7;
+  --ribbonColor:#b6b0b8;
+}
