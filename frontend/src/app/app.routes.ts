@@ -4,11 +4,13 @@ import { VideoPlayerComponent } from './moduls/video-player/video-player.compone
 import { MainScreenComponent } from './moduls/main-screen/main-screen.component';
 import { DonationScreenComponent } from './moduls/donation-screen/donation-screen.component';
 import { CoursesComponent } from './moduls/courses/courses.component';
+import { QuestionComponent } from './moduls/question/question.component';
 
 export const routes: Routes = [
     { path: '', component: MainScreenComponent },
     { path: 'lessons' , component : LessonsListComponent},
     { path: 'video/:videoId', component: VideoPlayerComponent },
-    { path: 'Donation' , component: DonationScreenComponent},
-    { path: 'Course', component : CoursesComponent }
+    { path: 'donation' , component: DonationScreenComponent},
+    { path: 'course', component : CoursesComponent },
+    { path: 'question', component: QuestionComponent }  // it should be deleted after the configuration
 ];

@@ -1,0 +1,130 @@
+.isSelected{
+  background-color: #500b85;
+}
+
+#stage-screen-card {
+  color: #500b85;
+  background-color: #ffffff;
+  border-radius: 1em;
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.3);
+  padding: 2em;
+  width: 100%;
+  margin: 1em auto;
+}
+
+.Question-button {
+  border-radius: 0.5em;
+  background-color: #500b85;
+  color: white;
+  font-size: 1.6rem;
+  padding: 0.8em 1.6em;
+  margin: 1.2em auto;
+  display: block;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  max-width: 80%;
+}
+
+.Question-button:hover {
+  background-color: #b480db;
+  box-shadow: 0 0.6rem 1.2rem rgba(72, 138, 197, 0.5);
+  transform: scale(0.990);
+}
+
+#box-question {
+  background-color: #ffffff;
+  padding: 1.5em;
+  margin: 1.5em auto;
+  box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.5);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+#question-header {
+  color: #03011c;
+  font-size: 1.7em;
+  margin-bottom: 1em;
+}
+
+.choice-prefix {
+  margin: auto 0;
+  padding: 1.2rem 1.5rem;
+  background-color: #a464d5;
+  border-radius: 0.7em 0 0 0.7em;
+  color: #ffffff;
+}
+
+.choice-container {
+  display: flex;
+  margin-bottom: 1em;
+  width: 70%;
+  font-size: 1.4rem;
+  border-radius: 1em;
+  background: #b480db;
+  transition: all 0.4s ease-in-out;
+  transform: scale(1);
+}
+
+.choice-container:hover {
+  cursor: pointer;
+  box-shadow: 0 0.8rem 2rem rgba(72, 138, 197, 0.5);
+  background-color: #a76ed6;
+  transform: scale(1.015);
+}
+
+.choice-text {
+  padding: 1.7rem;
+  margin: auto;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+#question-form {
+  transform: scale(0.60);
+  transform-origin: top center; 
+}
+
+.choice-container.selected {
+  background-color: #500b85 !important;
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.4);
+  transform: scale(0.985);
+}
+
+
+.choice-container.selected:hover {
+  background-color: #500b85 !important;
+  transform: scale(0.985); 
+  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.4);
+}
+
+.question-separator {
+  width: 100%;
+  height: 1.6px;
+  background-color: #434141;
+  border: none;
+  margin: 2em 0;  
+}
+
+@media (max-width: 48em) {
+  .choice-container {
+    font-size: 1.4rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .choice-prefix {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.5em 0.5em 0 0;
+  }
+
+  .choice-text {
+    padding: 1.2rem;
+    font-size: 1.6rem;
+  }
+
+  #stage-screen-card {
+    padding: 1.5em;
+    width: 100%;
+  }
+}
