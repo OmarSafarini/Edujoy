@@ -55,24 +55,22 @@ export class QuestionComponent {
   }
   
   onSubmitClick() {
-  let counter = 0;
-
-  for (const group of this.questionsGrouped) {
-    const questionText = group[0].question_body;
-    const userAnswer  = this.usersAnswer.find(u => u.Question === questionText);
-    if (userAnswer) {
-      const correctAnswer = group.find(ans => ans.is_true);
-      if (correctAnswer && correctAnswer.answer_body === userAnswer.Answer) {
-        counter++;
+    let counter = 0;
+    for (const group of this.questionsGrouped) {
+      const questionText = group[0].question_body;
+      const userAnswer  = this.usersAnswer.find(u => u.Question === questionText);
+      if (userAnswer) {
+        const correctAnswer = group.find(ans => ans.is_true);
+        if (correctAnswer && correctAnswer.answer_body === userAnswer.Answer) {
+          counter++;
+        }
       }
     }
+      this.resultMessage = `أجبت على ${counter}  من اصل ${this.questionsGrouped.length} إجابة صحيحة.`;
+
+    const modal = new (window as any).bootstrap.Modal(document.getElementById('resultModal'));
+    modal.show();
+
+    this.usersAnswer = [];
   }
-    this.resultMessage = `أجبت على ${counter}  من اصل ${this.questionsGrouped.length} إجابة صحيحة.`;
-
-  // Show modal
-  const modal = new (window as any).bootstrap.Modal(document.getElementById('resultModal'));
-  modal.show();
-
-  this.usersAnswer = [];
-}
 }
