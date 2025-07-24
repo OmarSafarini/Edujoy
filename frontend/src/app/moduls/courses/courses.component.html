@@ -1,0 +1,44 @@
+<!-- <app-navbar></app-navbar>
+<div class="container my-5">
+  <div class="row justify-content-center g-4">
+    <div class="col-md-4 d-flex justify-content-center">
+      <div class="card-flip">
+        <div class="card-inner">
+          <div class="card card-front">
+            <div class="card__image">
+              <img src="https://i.pinimg.com/736x/c7/49/e6/c749e6f3432063e1638cb54e47135135.jpg" class="w-100 h-100" style="object-fit: cover;">
+            </div>
+            <div class="cardcontent text-center">
+              <div class="title">Course 1: Arabic</div>
+            </div>
+          </div>
+          <div class="card card-back">
+            <div class="ribbon-wrapper">
+              <div class="ribbon">FREE</div>
+            </div>
+            <div class="cardcontent text-center">
+              دورة لتعلم اللغة العربية من الأساسيات حتى المهارات المتقدمة، مناسبة للمبتدئين من جميع الأعمار، وتشمل القراءة، الكتابة، والنطق الصحيح.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div> -->
+<app-navbar></app-navbar>
+
+<div class="container" style="margin-top: 4.5em;">
+  <div class="row justify-content-center">
+    <div *ngFor="let c of Course" class="col-sm-12 col-md-6 col-lg-4 mb-5">
+      <div class="card shadow-sm rounded" style="width: 87%;">
+        <img src="assets/HomePageImageOne.jpg" class="card-img-top" alt="image not found" style="height: 180px; object-fit: cover;">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-4 fs-3 fw-bold">{{ c.courseHeader }}</h5>
+          <p class="card-text" style="font-size: 0.95rem;">
+            {{ c.courseDescription }}
+          </p>
+          <a href="#" class="btn text-white custom-btn mt-3" style="background-color: #500b85;">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+
+<div class="d-flex justify-content-center align-items-center" style="direction: rtl;">
+  <div class="border rounded-3 shadow-sm p-4 bg-light" style="width: 100%; max-width: 400px;">
+
+    <h5 class="mb-4 text-center text-dark fw-semibold">إضافة فيديو</h5>
+
+    <form [formGroup]="videoForm" (ngSubmit)="onSubmit()">
+      
+      <div class="mb-3">
+        <label for="videoTitle" class="form-label">عنوان الفيديو</label>
+        <input
+          type="text"
+          id="videoTitle"
+          class="form-control"
+          placeholder="أدخل عنوان الفيديو"
+          formControlName="videoTitle"
+        />
+      </div>
+
+
+      <div class="mb-3">
+        <label for="videoUrl" class="form-label">رابط الفيديو</label>
+        <input
+          type="url"
+          id="videoUrl"
+          class="form-control"
+          placeholder="https://example.com"
+          formControlName="videoUrl"
+        />
+      </div>
+
+
+      <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-outline-secondary" (click)="goBack()">رجوع</button>
+        <button type="submit" class="btn" style="background-color: rgb(102, 28, 206); color: white;">موافق</button>
+      </div>
+
+    </form>
+  </div>
+</div>

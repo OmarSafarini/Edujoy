@@ -1,0 +1,37 @@
+<div class="container" id="question-form" style="color: blueviolet;">
+  <div class="row" id="Question-1">
+    <div class="col">
+      <div class="box rounded-4" id="box-question">
+        <div class="d-flex flex-row-reverse">
+          <h1>{{ lessonHeader }}</h1>
+        </div>
+        <hr class="question-separator"/>
+
+        <div id="game" *ngFor="let group of questionsGrouped; let i = index" class="d-flex flex-column align-items-center">
+          <h2 id="question-header">{{ group[0].question_body }}</h2>
+          <div class="choice-container"
+              *ngFor="let choice of group; let j = index"
+              (click)="onChoiceClick(group[0].question_body, choice.answer_body)"
+              [ngClass]="{ selected: isAnswerSelected(group[0].question_body, choice.answer_body) }">
+            <p class="choice-prefix">{{ choices[j] }}</p>
+            <p class="choice-text">{{ choice.answer_body }}</p>
+          </div>
+          <hr *ngIf="i < questionsGrouped.length - 1" class="question-separator" />
+        </div>
+        <button id="submit-btn" (click)="onSubmitClick()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true" dir="rtl">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ resultMessage }}</p>
+      </div>
+    </div>
+  </div>
+</div>
