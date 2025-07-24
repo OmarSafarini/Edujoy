@@ -3,24 +3,19 @@
     <div class="col">
       <div class="box rounded-4" id="box-question">
         <div class="d-flex flex-row-reverse">
-          <h2>{{ questionData[0].lesson }}</h2>
+          <h1>{{ lessonHeader }}</h1>
         </div>
         <hr class="question-separator"/>
 
-        <div id="game" *ngFor="let q of questionsGrouped; let i = index" style="padding-bottom: 1.5em;" class="d-flex flex-column align-items-center">
-          <h2 id="question-header">{{ q[0].question_body }}</h2>
-          <div
-              class="choice-container "
-              *ngFor="let choice of choices; let j = index"
-              (click)="onChoiceClick(q[0].question_body, questionData[i * 4 + j].answer_body)"
-              [ngClass]="{
-                selected: isAnswerSelected(q[0].question_body, questionData[i * 4 + j].answer_body)
-              }"
-            >
-            <p class="choice-prefix">{{ choice }}</p>
-            <p class="choice-text">{{ questionData[i * 4 + j].answer_body }}</p>
+        <div id="game" *ngFor="let group of questionsGrouped; let i = index" class="d-flex flex-column align-items-center">
+          <h2 id="question-header">{{ group[0].question_body }}</h2>
+          <div class="choice-container"
+              *ngFor="let choice of group; let j = index"
+              (click)="onChoiceClick(group[0].question_body, choice.answer_body)"
+              [ngClass]="{ selected: isAnswerSelected(group[0].question_body, choice.answer_body) }">
+            <p class="choice-prefix">{{ choices[j] }}</p>
+            <p class="choice-text">{{ choice.answer_body }}</p>
           </div>
-
           <hr *ngIf="i < questionsGrouped.length - 1" class="question-separator" />
         </div>
         <button id="submit-btn" (click)="onSubmitClick()">Submit</button>
