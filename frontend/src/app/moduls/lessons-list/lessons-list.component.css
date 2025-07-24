@@ -1,0 +1,15 @@
+.lessons-body{
+    max-width: 50rem;
+    width: 100%;
+    /* background-color: #fafafa; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+.progress-block{
+    max-width: 30rem;
+    width: 100%;
+    background-color: #ffffff;
+
+}
