@@ -14,6 +14,6 @@ export const routes: Routes = [
     { path: 'video/:videoId', component: VideoPlayerComponent },
     { path: 'donation' , component: DonationScreenComponent},
     { path: 'course', component : CoursesComponent },
-    { path: 'question', component: QuestionComponent }  // it should be deleted after the configuration
-    {path: 'addVideo', component: AddVideoToLessonComponent},
+    { path: 'question', component: QuestionComponent },  // it should be deleted after the configuration
+    { path: 'addVideo', component: AddVideoToLessonComponent},
 ];
