@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['course_name'];
+    protected $fillable = ['name'];
 
     public function enrollments() {
         return $this->hasMany(Enrollment::class);
