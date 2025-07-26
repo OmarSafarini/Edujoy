@@ -15,4 +15,5 @@ export const routes: Routes = [
   { path: 'course', component: CoursesComponent },
   { path: 'question/:lessonId', component: QuestionComponent }, // it should be deleted after the configuration
   { path: 'addVideo', component: AddVideoToLessonComponent },
+
 ];
