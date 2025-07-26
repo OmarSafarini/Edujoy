@@ -8,11 +8,11 @@ import { QuestionComponent } from './moduls/question/question.component';
 import { AddVideoToLessonComponent } from './moduls/add-video-to-lesson/add-video-to-lesson.component';
 
 export const routes: Routes = [
-  { path: '', component: MainScreenComponent },
-  { path: 'lessons', component: LessonsListComponent },
-  { path: 'video/:videoId', component: VideoPlayerComponent },
-  { path: 'donation', component: DonationScreenComponent },
-  { path: 'course', component: CoursesComponent },
-  { path: 'question', component: QuestionComponent }, // it should be deleted after the configuration
-  { path: 'addVideo', component: AddVideoToLessonComponent },
+    { path: '', component: MainScreenComponent },
+    { path: 'lessons/:id' , component : LessonsListComponent},
+    { path: 'video/:videoId', component: VideoPlayerComponent },
+    { path: 'donation' , component: DonationScreenComponent},
+    { path: 'course', component : CoursesComponent },
+    { path: 'question', component: QuestionComponent }  // it should be deleted after the configuration
+    { path: 'addVideo', component: AddVideoToLessonComponent },
 ];
