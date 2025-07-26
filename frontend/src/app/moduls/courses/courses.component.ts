@@ -11,6 +11,14 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './courses.component.css'
 })
 export class CoursesComponent {
+
+
+  courseId: number = 0;
+
+  getCourseId(){
+  }
+
+
   Course: any[] = [
     { courseHeader: 'كورس 1: عربي', courseDescription: 'دورة لتعلم اللغة العربية من الأساسيات حتى المهارات المتقدمة، مناسبة للمبتدئين من جميع الأعمار، وتشمل القراءة، الكتابة، والنطق الصحيح.' },
     { courseHeader: 'كورس 1: انجليزي', courseDescription: 'دورة لتعلم اللغة الإنجليزية بأسلوب سهل وواضح، تشمل المفردات، القواعد، المحادثة، والاستماع.' },

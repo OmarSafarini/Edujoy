@@ -36,7 +36,9 @@
           <p class="card-text" style="font-size: 0.95rem;">
             {{ c.courseDescription }}
           </p>
-          <a href="#" class="btn text-white custom-btn mt-3" style="background-color: #500b85;">Learn More</a>
+          <a 
+          [routerLink]="['/lessons']"
+          class="btn text-white custom-btn mt-3" style="background-color: #500b85;">Learn More</a>
         </div>
       </div>
     </div>

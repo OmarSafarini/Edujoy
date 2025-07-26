@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Course;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +16,23 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+         Course::factory()
+            ->count(5) // أنشئ 5 كورسات
+            ->hasLessons(3, [  // ولكل كورس 3 دروس
+                'name' => fake()->sentence(4)
+            ])
+            ->create()
+            ->each(function ($course) {
+                foreach ($course->lessons as $lesson) {
+                    $lesson->videos()->createMany(
+                        \App\Models\Video::factory()->count(2)->make()->toArray()
+                    );
+                }
+            });
     }
 }
