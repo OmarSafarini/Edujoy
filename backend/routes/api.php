@@ -12,5 +12,6 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/courses/{courseId}', [CourseController::class, 'getVideosForCourse']);
+Route::get('/courses', [CourseController::class, 'getAllCourses']);
 Route::get('lesson/{lessonId}/questions', [QuestionController::class, 'getByLesson']);
 Route::get('lesson/questions', [QuestionController::class, 'getAllQuestions']);
