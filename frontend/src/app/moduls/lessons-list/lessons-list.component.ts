@@ -4,6 +4,7 @@ import { Course } from '../../models/course.model';
 import { LessonsService } from '../../services/lessons.service';
 import { CommonModule } from '@angular/common';
 import { AddLessonToCourseComponent } from '../add-lesson-to-course/add-lesson-to-course.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lessons-list',
@@ -15,13 +16,16 @@ export class LessonsListComponent implements OnInit
 {
 
   course !: Course;
+  courseId: number = 0;
 
   isLessonFormOpen: boolean = false;
-  constructor(private lessonsService: LessonsService){}
+  constructor(private lessonsService: LessonsService, private route: ActivatedRoute){}
+
 
   ngOnInit(){
-    const courseId = 1;
-    this.lessonsService.getCourseWithLessons(courseId).subscribe({
+    this.courseId = Number(this.route.snapshot.paramMap.get('courseId'));
+
+    this.lessonsService.getCourseWithLessons(this.courseId).subscribe({
       next: (res:any) => {
         this.course = res[0]; 
         console.log(this.course?.id)
