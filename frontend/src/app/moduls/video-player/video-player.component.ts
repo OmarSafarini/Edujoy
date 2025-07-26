@@ -17,6 +17,7 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 })
 
 export class VideoPlayerComponent implements OnInit {
+
   // videoUrl: string = '';
   sanitizedVideoUrl?: SafeResourceUrl;
   videoTitle: string = '';
