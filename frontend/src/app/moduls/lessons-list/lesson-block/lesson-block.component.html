@@ -1,17 +1,22 @@
 <div class="lesson-item p-3 my-2 shadow-sm border-0" style="width: 100%">
-  <a
-    class="btn lesson-collapse"
-    data-bs-toggle="collapse"
-    [attr.href]="'#collapse' + lesson.id"
-    role="button"
-    aria-expanded="false"
-    [attr.aria-controls]="'collapse' + lesson.id"
-    style="width: 100%; height: 100%"
-  >
-    {{ lesson.name }}
-  <i class="bi bi-chevron-down"></i>
-    
-  </a>
+  <div class="d-flex justify-content-between">
+    <a
+      class="btn lesson-collapse"
+      data-bs-toggle="collapse"
+      [attr.href]="'#collapse' + lesson.id"
+      role="button"
+      aria-expanded="false"
+      [attr.aria-controls]="'collapse' + lesson.id"
+      style="width: auto; height: 100%; margin-bottom: 5px"
+    >
+      {{ lesson.name }}
+      <i class="bi bi-chevron-down"></i>
+    </a>
+
+    <a class="btn" (click)="openAddVideoForm()">
+      <i class="bi bi-plus" style="font-size: 20px"></i>
+    </a>
+  </div>
 
   <div class="collapse show" [attr.id]="'collapse' + lesson.id">
     <div class="card card-body">
@@ -24,18 +29,30 @@
           >
             <a
               class="text-decoration-none d-flex justify-content-start"
-              style="width: 100%; color: black;"
+              style="width: 100%; color: black"
               [routerLink]="['/video', video.id]"
               [queryParams]="{ lessonId: lesson.id }"
             >
-            <div class="ms-3" style="border-radius: 50%; border: solid 2px rgb(102, 28, 206); height: 20px; width: 20px;" ></div>
-  
-            {{ video.title }}
+              <div
+                class="ms-3"
+                style="
+                  border-radius: 50%;
+                  border: solid 2px rgb(102, 28, 206);
+                  height: 20px;
+                  width: 20px;
+                "
+              ></div>
 
+              {{ video.title }}
             </a>
           </li>
         </ul>
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="isFormOpen" class="addVideoForm">
+  <app-add-video-to-lesson [lessonId]="lessonId" (onBack)="openAddVideoForm($event)"></app-add-video-to-lesson>
+
 </div>

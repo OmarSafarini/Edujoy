@@ -1,0 +1,14 @@
+<form
+  [formGroup]="lessonForm"
+  (ngSubmit)="onSubmit()"
+  class="d-flex gap-2 mt-3"
+  style="max-width: 500px;"
+>
+  <input
+    type="text"
+    formControlName="lessonName"
+    class="form-control"
+    placeholder="أدخل اسم الدرس"
+  />
+  <button type="submit" class="btn" style="background-color: rgb(102, 28, 206); color: white;">موافق</button>
+</form>
