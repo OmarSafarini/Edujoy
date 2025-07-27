@@ -7,10 +7,15 @@ use App\Models\Lesson;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Course extends Model
 {
-    protected $fillable = ['course_name'];
+
+    use HasFactory;
+
+    protected $fillable = ['name','description'];
 
     public function enrollments() {
         return $this->hasMany(Enrollment::class);

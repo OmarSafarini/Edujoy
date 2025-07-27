@@ -17,8 +17,17 @@
       >
         <div class="progress-bar" style="width: 25%; background-color: rgb(102, 28, 206);">25%</div>
       </div>
-
     </div>
+
+<button type="button" class="btn d-inline-flex align-items-center" style="background-color: rgb(102, 28, 206); color: white;" (click)="openLessonForm()">
+  <span class="me-2">+</span> إضافة درس
+</button>
+
+
+    <div *ngIf = "isLessonFormOpen">
+          <app-add-lesson-to-course [courseId]="course.id"></app-add-lesson-to-course>
+    </div>
+
 
     <div class="lessons-body">
       <app-lesson-block

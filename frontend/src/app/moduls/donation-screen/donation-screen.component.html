@@ -1,39 +1,74 @@
 <div class="donation-screen-background-container">
-  <form [formGroup]="donationForm" class="donation-screen-Form" (ngSubmit)="onSubmit()">
-    
-    <div class="donation-screen-cardnumber">
-      <label>Card Number</label>
-      <small>Enter the 16-digit card number on the card</small>
-      <input type="text" formControlName="cardNumber" placeholder="xxxx - xxxx - xxxx - xxxx"
-             maxlength="19" (input)="formatCardNumber($event)" />
+  <div class="donation-grid">
+
+    <div class="card-container">
+      <div class="card-preview back-cvv">
+        <div class="magnetic-strip"></div>
+        <div class="dummy-lines">
+          <div class="line short"></div>
+          <div class="line long"></div>
+          <div class="line medium"></div>
+        </div>
+        <div class="cvv-box">
+          {{ donationForm.get('cvv')?.value || '***' }}
+        </div>
+      </div>
+      <div class="card-preview front">
+        <div class="card-number">
+          <img src="assets/bank.png" alt="Bank Logo" class="bank-logo" />
+          <br>
+          {{ donationForm.get('cardNumber')?.value || 'XXXX XXXX XXXX XXXX' }}
+        </div>
+        <div class="card-name-date">
+          <span>{{ donationForm.get('donorName')?.value || 'DONOR NAME' }}</span>
+          <span>{{ (donationForm.get('expiryMonth')?.value || 'MM') + '/' + (donationForm.get('expiryYear')?.value || 'YYYY') }}</span>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal Logo" class="paypal-logo" />
+      </div>
     </div>
 
-    <div class="donation-screen-name">
-      <label>Card Number Holder</label>
-      <small>Enter name card holder on the card</small>
-      <input type="text" formControlName="donorName" placeholder="Donor Name" />
-    </div>
+    <form [formGroup]="donationForm" class="donation-screen-Form" (ngSubmit)="onSubmit()">
+      <div class="form-columns">
+        <div class="form-group">
+          <label>Card Number</label>
+          <small>16-digit card number on the card</small>
+          <input type="text" formControlName="cardNumber" placeholder="xxxx - xxxx - xxxx - xxxx"
+                 maxlength="19" (input)="formatCardNumber($event)" />
+        </div>
 
-    <div class="donation-screen-cvv">
-      <label>CVV Number</label>
-      <small>Enter the 3 or 4 digits number on the card</small>
-      <input type="text" formControlName="cvv" placeholder="3-digit code is on the back of the card" maxlength="4" />
-    </div>
+        <div class="form-group">
+          <label>Card Number Holder</label>
+          <small>name of the card holder exactly as it appears on the card</small>
+          <input type="text" formControlName="donorName" placeholder="Donor Name" />
+        </div>
 
-    <div class="donation-screen-date">
-      <label>Expiry Date</label>
-      <small>Enter the expiration date of the card</small>
-      <input type="text" formControlName="expiryMonth" placeholder="MM" maxlength="2" />
-      <span>/</span>
-      <input type="text" formControlName="expiryYear" placeholder="YYYY" maxlength="4" />
-    </div>
+        <div class="form-group">
+          <label>Amount</label>
+          <small>wanted amount for the donation</small>
+          <input type="text" formControlName="amount" placeholder="Money Amount" />
+        </div>
 
-    <div class="donation-screen-amount">
-      <label>Amount</label>
-      <input type="text" formControlName="amount" placeholder="Money Amount" />
-    </div>
+        <div class="form-group">
+          <label>CVV Number</label>
+          <small>Enter the 3 or 4 digits number on the card</small>
+          <input type="text" formControlName="cvv" placeholder="3-digit code" maxlength="4" />
+        </div>
 
-    <input type="submit" value="Pay Now" id="Payment" />
-    <a routerLink="/" id="Button-Return-To-Main">Back to Main Screen</a>
-  </form>
+        <div class="form-group full-width">
+          <label>Expiry Date</label>
+          <small>Enter the expiration date of the card</small>
+          <div class="expiry-submit-wrap">
+            <div class="expiry-fields">
+              <input type="text" formControlName="expiryMonth" placeholder="MM" maxlength="2" />
+              <span>/</span>
+              <input type="text" formControlName="expiryYear" placeholder="YYYY" maxlength="4" />
+            </div>
+            <input type="submit" value="Pay Now" id="Payment" />
+          </div>
+        </div>
+      </div>
+
+      <a routerLink="/" id="Button-Return-To-Main">Back to Main Screen</a>
+    </form>
+  </div>
 </div>

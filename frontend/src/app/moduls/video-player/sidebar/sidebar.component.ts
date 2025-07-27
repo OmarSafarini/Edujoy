@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {Course} from '../../models/course.model';
+import {Course} from '../../../models/course.model';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common'; 
 
