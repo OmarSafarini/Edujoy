@@ -9,8 +9,7 @@
           <a
             class="video-item p-3 my-3"
             [class.active]="video.id === selectedVideoId"
-            [routerLink]="['/video', video.id]"
-            [queryParams]="{ lessonId: lesson.id }"
+            [routerLink]="['/course', course?.id, 'video', video.id]"
           >
             {{ video.title }}
           </a>

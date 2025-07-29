@@ -30,8 +30,7 @@
             <a
               class="text-decoration-none d-flex justify-content-start"
               style="width: 100%; color: black"
-              [routerLink]="['/video', video.id]"
-              [queryParams]="{ lessonId: lesson.id }"
+              [routerLink]="['/course', lesson.course_id, 'video', video.id]"
             >
               <div
                 class="ms-3"

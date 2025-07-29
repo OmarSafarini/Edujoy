@@ -9,11 +9,10 @@ import { AddVideoToLessonComponent } from './moduls/add-video-to-lesson/add-vide
 
 export const routes: Routes = [
   { path: '', component: MainScreenComponent },
-  { path: 'lessons/:courseId', component: LessonsListComponent },
-  { path: 'video/:videoId', component: VideoPlayerComponent },
+  { path: 'course/:courseId', component: LessonsListComponent },
+  { path: 'course/:courseId/video/:videoId', component: VideoPlayerComponent, runGuardsAndResolvers: 'paramsOrQueryParamsChange' },
   { path: 'donation', component: DonationScreenComponent },
   { path: 'course', component: CoursesComponent },
   { path: 'question/:lessonId', component: QuestionComponent }, // it should be deleted after the configuration
   { path: 'addVideo', component: AddVideoToLessonComponent },
-
 ];
