@@ -6,9 +6,13 @@ use App\Models\Course;
 use App\Models\Video;
 use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Lesson extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['course_id', 'name'];
 
     public function course() {

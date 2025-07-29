@@ -17,6 +17,7 @@ import {SidebarComponent} from './sidebar/sidebar.component';
 })
 
 export class VideoPlayerComponent implements OnInit {
+
   // videoUrl: string = '';
   sanitizedVideoUrl?: SafeResourceUrl;
   videoTitle: string = '';
@@ -33,14 +34,14 @@ export class VideoPlayerComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.videoId = +params['videoId'];
-      this.lessonId = Number(this.route.snapshot.queryParamMap.get('lessonId'));
-
-      this.loadVideo(this.videoId, this.lessonId);
+      const courseId = +params['courseId'];
+      console.log("course Id : ", courseId);
+      this.loadVideo(this.videoId, courseId);
     });
   }
 
-  loadVideo(videoId: number, lessonId: number) {
-    this.lessonsService.getCourseWithLessons(lessonId).subscribe({
+  loadVideo(videoId: number, courseId: number) {
+    this.lessonsService.getCourseWithLessons(courseId).subscribe({
       next: (res: any) => {
         this.course = res[0];
 
@@ -48,9 +49,9 @@ export class VideoPlayerComponent implements OnInit {
         for (const lesson of this.course.lessons) {
           for (const video of lesson.videos) {
             if (video.id === videoId) {
-              // this.videoUrl = video.video_url;
               this.videoTitle = video.title;
               this.sanitizedVideoUrl = this.sanitizeYouTubeUrl(video.video_url);
+              console.log("lesson id: ", video.lesson_id)
               return;
             }
           }

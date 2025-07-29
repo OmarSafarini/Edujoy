@@ -30,8 +30,7 @@
             <a
               class="text-decoration-none d-flex justify-content-start"
               style="width: 100%; color: black"
-              [routerLink]="['/video', video.id]"
-              [queryParams]="{ lessonId: lesson.id }"
+              [routerLink]="['/course', lesson.course_id, 'video', video.id]"
             >
               <div
                 class="ms-3"
@@ -46,6 +45,30 @@
               {{ video.title }}
             </a>
           </li>
+
+
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center rounded shadow-sm my-2 px-3 py-2 border-0"
+            style="background-color: #f8f9fa"
+          >
+            <a
+              class="text-decoration-none d-flex justify-content-start"
+              style="width: 100%; color: black"
+              [routerLink]="['/question', lesson.id]"
+            >
+              <div
+                class="ms-3"
+                style="
+                  border-radius: 50%;
+                  border: solid 2px rgb(102, 28, 206);
+                  height: 20px;
+                  width: 20px;
+                "
+              ></div>
+             إبدًا الإختبار
+            </a>
+          </li>
+
         </ul>
       </div>
     </div>
