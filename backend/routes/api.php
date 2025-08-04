@@ -18,3 +18,4 @@ Route::get('lesson/{lessonId}/questions', [QuestionController::class, 'getByLess
 Route::get('lesson/questions', [QuestionController::class, 'getAllQuestions']);
 Route::post('/courses/{courseId}', [CourseController::class, 'addLesson']);
 Route::post('/lesson/{lessonId}', [LessonController::class, 'addVideoToLesson']);
+Route::post('/lesson/{lessonId}/questions', [QuestionController::class, 'addQuestions']);
