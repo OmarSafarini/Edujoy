@@ -1,17 +1,23 @@
-<div class="sidebar py-3">
-  <h3>{{ course?.name }}</h3>
+<div class="sidebar py-5">
+  <h3 class="pt-3">{{ course?.name }}</h3>
   <div class="sidebar-body">
     <div *ngFor="let lesson of course?.lessons">
       <hr />
       <strong> الدرس: {{ lesson.name }}</strong>
       <ul>
+
+        <li *ngIf="!lesson.videos || lesson.videos.length === 0">
+          <em class="text-muted">لا يوجد فيديوهات لهذا الدرس</em>
+        </li>
+
         <li *ngFor="let video of lesson.videos">
           <a
             class="video-item p-3 my-3"
             [class.active]="video.id === selectedVideoId"
             [routerLink]="['/course', course?.id, 'video', video.id]"
           >
-            {{ video.title }}
+            {{ video.title ? video.title : 'الفيديو غير متوفر' }}
+
           </a>
         </li>
       </ul>

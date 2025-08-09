@@ -1,4 +1,4 @@
-<div class="lesson-item p-3 my-2 shadow-sm border-0" style="width: 100%">
+<div class="lesson-item p-3 my-2 shadow-sm rounded" style="width: 100%; border-right: solid 10px rgb(102, 28, 206);">
   <div class="d-flex justify-content-between">
     <a
       class="btn lesson-collapse"
@@ -18,14 +18,20 @@
     </a>
   </div>
 
-  <div class="collapse show" [attr.id]="'collapse' + lesson.id">
-    <div class="card card-body">
-      <div class="videos-list">
+  <div class="collapse show" [attr.id]="'collapse' + lesson.id" >
+    <div class="card card-body" style="background-color: gainsboro;">
+      <div class="videos-list" >
         <ul>
+
+          <li *ngIf="!lesson.videos || lesson.videos.length === 0">
+          <em class="text-muted">لا يوجد فيديوهات لهذا الدرس</em>
+        </li>
+
           <li
             *ngFor="let video of lesson?.videos"
-            class="list-group-item d-flex justify-content-between align-items-center rounded shadow-sm my-2 px-3 py-2 border-0"
-            style="background-color: #f8f9fa"
+            class="list-group-item d-flex justify-content-between align-items-center rounded shadow-sm my-2 px-3 py-2"
+            style="background-color: #f8f9fa; border-right: solid 10px rgb(102, 28, 206);"
+            
           >
             <a
               class="text-decoration-none d-flex justify-content-start"
@@ -47,7 +53,7 @@
           </li>
 
 
-          <li
+          <li *ngIf="lesson.videos.length != 0"
             class="list-group-item d-flex justify-content-between align-items-center rounded shadow-sm my-2 px-3 py-2 border-0"
             style="background-color: #f8f9fa"
           >
