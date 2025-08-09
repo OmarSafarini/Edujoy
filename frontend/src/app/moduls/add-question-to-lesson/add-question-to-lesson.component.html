@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center mt-4">
+  <form (ngSubmit)="onSubmit()" #questionForm="ngForm" class="d-flex flex-column gap-2" style="max-width: 500px; width: 100%;">
+    <label>السؤال:</label>
+    <input type="text" [(ngModel)]="questionBody" name="questionBody" class="form-control mb-5" placeholder="أدخل نص السؤال" />
+
+    <label>الإجابة الأولى:</label>
+    <input type="text" [(ngModel)]="answers[0].text" name="answer1" class="form-control" placeholder="الإجابة 1" />
+    <select [(ngModel)]="answers[0].isCorrect" name="isCorrect1" class="form-select mb-5">
+      <option [ngValue]="true">صح</option>
+      <option [ngValue]="false">خطأ</option>
+    </select>
+
+    <label>الإجابة الثانية:</label>
+    <input type="text" [(ngModel)]="answers[1].text" name="answer2" class="form-control" placeholder="الإجابة 2" />
+    <select [(ngModel)]="answers[1].isCorrect" name="isCorrect2" class="form-select mb-5">
+      <option [ngValue]="true">صح</option>
+      <option [ngValue]="false">خطأ</option>
+    </select>
+
+    <label>الإجابة الثالثة:</label>
+    <input type="text" [(ngModel)]="answers[2].text" name="answer3" class="form-control" placeholder="الإجابة 3" />
+    <select [(ngModel)]="answers[2].isCorrect" name="isCorrect3" class="form-select mb-5">
+      <option [ngValue]="true">صح</option>
+      <option [ngValue]="false">خطأ</option>
+    </select>
+
+    <label>الإجابة الرابعة:</label>
+    <input type="text" [(ngModel)]="answers[3].text" name="answer4" class="form-control" placeholder="الإجابة 4"/>
+    <select [(ngModel)]="answers[3].isCorrect" name="isCorrect4" class="form-select mb-5">
+      <option [ngValue]="true">صح</option>
+      <option [ngValue]="false">خطأ</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary mt-3 submit-btn">إرسال</button>
+  </form>
+</div>
