@@ -1,0 +1,20 @@
+.submit-btn {
+  background: linear-gradient(135deg, #a464d5, #2c1e3e);
+  color: rgb(255, 255, 255);
+  padding: 0.7em 2.5em;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 2em;
+  text-decoration: none;
+  border: none;
+  margin-top: 1em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(96, 67, 176, 0.3);
+} 
+
+.submit-btn:hover {
+  background-color: rgb(219, 141, 255);
+  color: #f2d7ff;
+  box-shadow: 0 6px 16px rgba(96, 67, 176, 0.4);
+  transform: scale(1.05);
+}

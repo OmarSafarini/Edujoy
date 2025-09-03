@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuestionService } from '../../services/question.service';
+import { AddQuestionToLessonComponent } from '../add-question-to-lesson/add-question-to-lesson.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-question',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule , AddQuestionToLessonComponent],
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.css']
 })
@@ -17,9 +19,11 @@ export class QuestionComponent {
   choices = ['A', 'B', 'C', 'D'];
   usersAnswer: { Question: string; Answer: string }[] = [];
   resultMessage = '';
+  lessonId: number = 1;
 
-  constructor(private questionService: QuestionService) {
-    this.questionService.getQuestionsWithAnswers(1).subscribe(data => {
+  constructor(private questionService: QuestionService, private route: ActivatedRoute) {
+    this.lessonId = this.route.snapshot.params['lessonId'];
+    this.questionService.getQuestionsWithAnswers(this.lessonId).subscribe(data => {
       this.questionData = data;
       this.lessonHeader = this.questionData.name;
       this.questions = this.questionData.questions.flatMap((q: any) =>
@@ -77,4 +81,17 @@ export class QuestionComponent {
     modal.show();
     this.usersAnswer = [];
   }
+
+  openModal() {
+    const modal = new (window as any).bootstrap.Modal(document.getElementById('addQuestionModal'));
+    modal.show();
+  }
+
+  closeModal() {
+  const modalEl = document.getElementById('addQuestionModal');
+  if (modalEl) {
+    const modal = (window as any).bootstrap.Modal.getInstance(modalEl);
+    modal?.hide();
+  }
+}
 }

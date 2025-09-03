@@ -1,4 +1,16 @@
-<div class="container" id="question-form" style="color: blueviolet;">
+<div class="modal fade" id="addQuestionModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content p-3">
+              <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <app-add-question-to-lesson [lessonId]="lessonId" (formSubmitted)="closeModal()"></app-add-question-to-lesson>
+              </div>
+            </div>
+          </div>
+</div>
+<div class="container" id="question-form" style="color: rgb(102, 28, 206); padding-top:75px;">
   <div class="row" id="Question-1">
     <div class="col">
       <div class="box rounded-4" id="box-question">
@@ -6,6 +18,15 @@
           <h1>{{ lessonHeader }}</h1>
         </div>
         <hr class="question-separator"/>
+
+        <div class="text-end mb-5">
+          <button
+            class="btn fw-bolder rounded-4"
+            style="background:linear-gradient(135deg, #a464d5, #2c1e3e); color: white; font-size: 0.94em; padding: 0.6em 1.4em;"
+            (click)="openModal()">
+            + إضافة سؤال
+          </button>  
+        </div>  
 
         <div id="game" *ngFor="let group of questionsGrouped; let i = index" class="d-flex flex-column align-items-center">
           <h2 id="question-header">{{ group[0].question_body }}</h2>
