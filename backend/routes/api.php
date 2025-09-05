@@ -1,12 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoHistoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 
 
