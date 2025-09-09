@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<app-loader *ngIf="loading"></app-loader>
+<div *ngIf="!loading" class="notifications-container">
+  <div class="app">
+    <div class="header">
+      <h2>
+        <span class="title">الإشعارات</span>
+        <!-- <span class="unread-notification-number">{{ unreadCount }}</span> -->
+      </h2>
+      <!-- <p (click)="markAllAsRead()">تحديد الكل كمقروء</p> -->
+    </div>
+
+    <div class="body">
+      <app-loader *ngIf="loading"></app-loader>
+     <div *ngIf="notifications.length === 0 && !loading" class="empty-state text-center p-4">
+  <img [src]="emptyImage" alt="لا توجد إشعارات" class="empty-img mb-3">
+  <p class="empty-text">لا توجد إشعارات حاليًا.</p>
+</div>
+
+      <ng-container *ngIf="!loading">
+      <div *ngFor="let notification of notifications" class="notification" [ngClass]="{ 'readed': notification.read_at }">
+        <div class="avatar">
+          <img [src]="getNotificationImage(notification.title)"  alt="User" />
+        </div>
+        <div class="text">
+          <div class="text-top">
+            <p>
+              <span class="profil-name">{{ notification.title }}</span>
+              <!-- <span *ngIf="notification.read_status === 'unread'" class="unread-dot"></span> -->
+            </p>
+          </div>
+          <div class="text-bottom">
+            <p>{{ notification.body }}</p>
+            <small>{{ notification.created_at | date:'short' }}</small>
+          </div>
+          <!-- <div class="notification-actions">
+    <button *ngIf="!notification.read_at" class="icon-btn text-primary" (click)="markAsRead(notification.id)">
+      <i class="bi bi-envelope-open"></i>
+    </button>
+    <button class="icon-btn text-danger" (click)="deleteNotification(notification.id)">
+      <i class="bi bi-trash3"></i>
+    </button>
+  </div> -->
+
+        </div>
+      </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

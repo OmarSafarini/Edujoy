@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    // عرض كل الإشعارات
     public function index(Request $request)
     {
-        $notifications = Notification::with('user')->latest()->get();
+       $notifications = Notification::with('user')
+        ->latest()
+        ->take(10)
+        ->get();
+
         return response()->json($notifications);
     }
 
-    // إضافة إشعار جديد
+    
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,7 +39,6 @@ class NotificationController extends Controller
         ], 201);
     }
 
-    // حذف إشعار
     public function destroy($id)
     {
         $notification = Notification::find($id);
