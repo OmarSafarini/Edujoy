@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -30,6 +32,15 @@ class CourseController extends Controller
             'course_id' => $courseId,
             'name' => $validated['name']
         ]);
+        $users = User::all();
+        foreach ($users as $user) {
+            Notification::create([
+                'user_id' => $user->id,
+                'title' => 'درس جديد مضاف',
+                'body' => "تم إضافة درس جديد بعنوان: {$lesson->name} في كورس رقم {$courseId}",
+                'read_status' => 'unread',
+            ]);
+        }
 
         return response()->json($lesson, 201);
     }
