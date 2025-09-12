@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CourseController extends Controller
 {
@@ -18,10 +19,12 @@ class CourseController extends Controller
 
 
     public function addLesson(Request $request, $courseId){
+        
+        Gate::authorize('create',Lesson::class);
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
-
         $lesson = Lesson::create([
             'course_id' => $courseId,
             'name' => $validated['name']

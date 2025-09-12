@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Video;
+use Illuminate\Support\Facades\Gate;
 
-class LessonController extends Controller
-{
+class LessonController extends Controller{
 
+    function addVideoToLesson(Request $request, $lessonId){
+        Gate::authorize('create',Video::class);
 
-    function addVideoToLesson(Request $request, $lessonId)
-    {
         $request->validate([
             'title' => 'required|string',
             'video_url' => 'required|string',

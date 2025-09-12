@@ -9,9 +9,12 @@ import { Lesson } from '../models/lesson.model';
 })
 
 export class CourseService {
-    constructor(private http: HttpClient) {}
+  
+  private baseUrl = 'http://127.0.0.1:8000/api'
+  constructor(private http: HttpClient) {}
 
-    addLessonToCourse(lesson: Lesson, courseId: number) {
-        return this.http.post<Lesson>(`http://127.0.0.1:8000/api/courses/${courseId}`, lesson);
-    }
+  addLessonToCourse(lesson: Lesson, courseId: number) {
+    const addLessonsToCourseUrl = `${this.baseUrl}/courses/${courseId}/lessons`
+    return this.http.post<Lesson>(addLessonsToCourseUrl, lesson);
+  }
 }

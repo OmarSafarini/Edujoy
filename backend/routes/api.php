@@ -8,23 +8,21 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AuthController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-Route::controller(VideoHistoryController::class)
-    ->prefix('video_history')
-    ->middleware('auth:sanctum')
-    ->group(function () {
-        Route::get('/', 'index');
-        Route::post('/', 'store');
-    });
-
-
-Route::get('/courses/{courseId}', [CourseController::class, 'getVideosForCourse']);
-Route::get('lesson/{lessonId}/questions', [QuestionController::class, 'getByLesson']);
-Route::get('lesson/questions', [QuestionController::class, 'getAllQuestions']);
-Route::post('/courses/{courseId}', [CourseController::class, 'addLesson']);
-Route::post('/lesson/{lessonId}', [LessonController::class, 'addVideoToLesson']);
-
+// public endpoints
 Route::post('login',[AuthController::class,'login']);
+Route::get('/courses/{courseId}', [CourseController::class, 'getVideosForCourse']);
+Route::get('lessons/questions', [QuestionController::class, 'getAllQuestions']);
+Route::get('lessons/{lessonId}/questions', [QuestionController::class, 'getByLesson']);
+
+// private endpoints
+Route::middleware('auth:sanctum')->group(function (){
+    Route::post('/courses/{courseId}/lessons', [CourseController::class, 'addLesson']);
+    Route::post('/lessons/{lessonId}/videos', [LessonController::class, 'addVideoToLesson']);
+    Route::controller(VideoHistoryController::class)
+        ->prefix('video_history')
+        ->group(function () {
+            Route::get('/', 'index');
+            Route::post('/', 'store');
+        });
+    Route::get('/profile', [AuthController::class,'profile']);
+});

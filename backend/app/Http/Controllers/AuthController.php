@@ -27,4 +27,8 @@ class AuthController extends Controller{
         ], 401);
     }
 
+    function profile(Request  $request){
+        return $request->user();
+    }
+
 }

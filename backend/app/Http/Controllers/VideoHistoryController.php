@@ -25,6 +25,7 @@ class VideoHistoryController extends Controller
 
         return response()->json($data);
     }
+    //
 
     /**
      * Store a newly created resource in storage.

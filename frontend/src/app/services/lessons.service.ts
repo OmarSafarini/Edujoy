@@ -9,17 +9,19 @@ import { Video } from '../models/video.model';
 })
 
 export class LessonsService {
-  private apiUrl = 'http://127.0.0.1:8000/api/courses';
+  private baseUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) {}
 
   getCourseWithLessons(courseId: number): Observable<Course[]> {
-    return this.http.get<Course[]>(`${this.apiUrl}/${courseId}`);
+    const courseDetailsUrl = `${this.baseUrl}/courses/${courseId}`
+    return this.http.get<Course[]>(courseDetailsUrl);
   }
   
 
-    addVideoToLesson(video: Video){
-    return this.http.post<Video>(`http://127.0.0.1:8000/api/lesson/${video.lesson_id}`, video);
+  addVideoToLesson(video: Video){
+    const addVideoToLessonUrl = `${this.baseUrl}/lessons/${video.lesson_id}/videos`
+    return this.http.post<Video>(addVideoToLessonUrl,video);
   }
 
 

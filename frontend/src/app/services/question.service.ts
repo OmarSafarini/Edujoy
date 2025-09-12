@@ -7,11 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class QuestionService {
 
-  private apiUrl = 'http://127.0.0.1:8000/api/lesson/'; 
+  private baseUrl = 'http://127.0.0.1:8000/api'; 
 
   constructor(private http: HttpClient) { }
 
   getQuestionsWithAnswers(lessonId: any) {
-    return this.http.get(`${this.apiUrl}${lessonId}/questions`);
+    const getLessonsQuestionsUrl = `${this.baseUrl}/lessons/questions`
+    return this.http.get(getLessonsQuestionsUrl);
   }
 }
