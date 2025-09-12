@@ -34,30 +34,31 @@ class VideoHistoryController extends Controller
     {
         $request->validate([
             'video_id' => 'required|exists:videos,id',
+            'is_completed' => 'sometimes|boolean',
         ]);
 
         $user = $request->user();
         $videoId = $request->video_id;
+        $isCompleted = $request->input('is_completed', false);
 
-        $exists = VideoHistory::where('user_id', $user->id)
-                    ->where('video_id', $videoId)
-                    ->exists();
-
-        if ($exists) {
-            return response()->json([
-                'success' => false,
-                'message' => 'This video history already exists for this user.'
-            ], 400);
-        }
-
-        $new_history = VideoHistory::create([
-            'user_id' => $user->id,
-            'video_id' => $videoId,
-        ]);
+        $history = VideoHistory::updateOrCreate(
+            [
+                'user_id' => $user->id,
+                'video_id' => $videoId,
+            ],
+            [
+                'is_completed' => $isCompleted,
+                'updated_at'   => now(),
+            ]
+        );
 
         return response()->json([
             'success' => true,
-            'data' => $new_history,
-        ], 201);
+            'data' => $history,
+            'message' => $history->wasRecentlyCreated
+                ? 'New video history created.'
+                : 'Video history updated.',
+        ], $history->wasRecentlyCreated ? 201 : 200);
     }
+
 }
