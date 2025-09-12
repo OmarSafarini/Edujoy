@@ -5,10 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VideoHistoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
-
+use App\Http\Controllers\AuthController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -28,3 +26,5 @@ Route::get('lesson/{lessonId}/questions', [QuestionController::class, 'getByLess
 Route::get('lesson/questions', [QuestionController::class, 'getAllQuestions']);
 Route::post('/courses/{courseId}', [CourseController::class, 'addLesson']);
 Route::post('/lesson/{lessonId}', [LessonController::class, 'addVideoToLesson']);
+
+Route::post('login',[AuthController::class,'login']);
