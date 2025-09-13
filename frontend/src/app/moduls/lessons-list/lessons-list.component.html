@@ -4,7 +4,6 @@
     </div>
   <div class="container d-flex flex-column align-items-center" dir="rtl">
     
-    <h2 class="mt-5 pt-3">{{ course?.name }}</h2>
 
         <hr style="width: 100%;">
 
@@ -23,10 +22,10 @@
       </div>
     </div>
 
-<button type="button" class="btn d-inline-flex align-items-center" style="background-color: rgb(102, 28, 206); color: white;" (click)="openLessonForm()">
+<!-- <button type="button" class="btn d-inline-flex align-items-center" style="background-color: rgb(102, 28, 206); color: white;" (click)="openLessonForm()">
   <span class="me-2">+</span> إضافة درس
-</button>
-
+</button> فقط لعرض المشروع بالمعرض -->
+ 
 
     <div *ngIf = "isLessonFormOpen">
           <app-add-lesson-to-course [courseId]="course.id"></app-add-lesson-to-course>

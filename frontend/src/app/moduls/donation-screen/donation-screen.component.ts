@@ -35,6 +35,8 @@ export class DonationScreenComponent implements OnInit {
     if (!this.donationForm.valid) {
       alert('The fields should be all completed');
     } else {
+      alert('The donation is done successfully');
+      
       console.log('Donation data:', this.donationForm.value);
     }
   }
