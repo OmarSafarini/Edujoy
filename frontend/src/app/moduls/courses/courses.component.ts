@@ -5,11 +5,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { CoursesService } from '../../services/courses.service';
 import { Course } from '../../models/course.model';
 import { FormsModule } from "@angular/forms";
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [RouterModule, CommonModule, NavbarComponent, FormsModule],
+  imports: [RouterModule, CommonModule, NavbarComponent,LoaderComponent,FormsModule],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css']
 })
@@ -20,6 +21,13 @@ export class CoursesComponent  {
 
   searchText: string = '';
 
+  // constructor(private coursesService: CoursesService) {
+  //   this.coursesService.getAllCourses().subscribe(data => {
+  //     this.courses = data;
+  //     console.log(this.courses); //this should be deleted in the production
+  //   });
+  // }
+  loading: boolean = true; 
   constructor(private coursesService: CoursesService) {
     this.getAllCourses();
   }
@@ -43,6 +51,20 @@ export class CoursesComponent  {
     this.courses = this.allCourses.filter(course =>
       course.name.toLowerCase().includes(this.searchText.toLowerCase())
     );
+    this.loadCourses();
+  }
+
+  loadCourses() {
+    this.loading = true;
+    this.coursesService.getAllCourses().subscribe({
+      next: (data) => {
+        this.courses = data;
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false; 
+      }
+    });
   }
 }
   getCourseGroup(i: number): number {

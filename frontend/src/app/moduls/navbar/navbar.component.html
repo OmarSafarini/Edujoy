@@ -16,6 +16,23 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/donation">Donation</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex  align-items-center" 
+             [routerLink]="['/notifications']">
+            <i class="bi bi-bell d-none d-lg-inline"></i>
+            <span class="d-inline d-lg-none">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item ms-lg-3 ms-0">
+          <a class="nav-link p-0 d-flex align-items-center" [routerLink]="['/profile']" [state]="{ id: userId }">
+            <div class="profile-circle d-none d-lg-inline">
+              <img [src]="displayImage" alt="Profile Image" />
+            </div>
+            <span class="d-inline d-lg-none">Profile Page</span>
+          </a>
+        </li>
+
       </ul>
     </div>
   </div>

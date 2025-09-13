@@ -1,122 +1,94 @@
-<!-- <app-navbar></app-navbar>
-<div class="container my-5">
-  <div class="row justify-content-center g-4">
-    <div class="col-md-4 d-flex justify-content-center">
-      <div class="card-flip">
-        <div class="card-inner">
-          <div class="card card-front">
-            <div class="card__image">
-              <img src="https://i.pinimg.com/736x/c7/49/e6/c749e6f3432063e1638cb54e47135135.jpg" class="w-100 h-100" style="object-fit: cover;">
-            </div>
-            <div class="cardcontent text-center">
-              <div class="title">Course 1: Arabic</div>
-            </div>
-          </div>
-          <div class="card card-back">
-            <div class="ribbon-wrapper">
-              <div class="ribbon">FREE</div>
-            </div>
-            <div class="cardcontent text-center">
-              دورة لتعلم اللغة العربية من الأساسيات حتى المهارات المتقدمة، مناسبة للمبتدئين من جميع الأعمار، وتشمل القراءة، الكتابة، والنطق الصحيح.
-            </div>
-          </div>
+<app-navbar></app-navbar>
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="!loading" class="container" style="margin-top: 5.5em;">
+  <div style="display: flex; justify-content: center; position: relative; left: 179px;">
+    <div class="galaxy"></div>
+    <div id="search-container">
+      <div class="nebula"></div>
+      <div class="starfield"></div>
+      <div class="cosmic-dust"></div>
+      <div class="cosmic-dust"></div>
+      <div class="cosmic-dust"></div>
+      <div class="stardust"></div>
+      <div class="cosmic-ring"></div>
+
+      <div id="main">
+        <input
+          class="input"
+          name="text"
+          type="text"
+          placeholder="بحث عن الكورس"
+          [(ngModel)]="searchText"
+          (keyup.enter)="filterCourses()"
+        />
+        <div id="input-mask"></div>
+        <div id="cosmic-glow"></div>
+        <div class="wormhole-border"></div>
+        <div id="wormhole-icon">
+          <svg
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2"
+            stroke="#a9c7ff"
+            fill="none"
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+          >
+            <circle r="10" cy="12" cx="12"></circle>
+            <path
+              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+            ></path>
+            <path d="M2 12h20"></path>
+          </svg>
+        </div>
+        <div id="search-icon">
+          <svg
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            stroke-width="2"
+            stroke="url(#cosmic-search)"
+            fill="none"
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+          >
+            <circle r="8" cy="11" cx="11"></circle>
+            <line y2="16.65" x2="16.65" y1="21" x1="21"></line>
+            <defs>
+              <linearGradient gradientTransform="rotate(45)" id="cosmic-search">
+                <stop stop-color="#a9c7ff" offset="0%"></stop>
+                <stop stop-color="#6e8cff" offset="100%"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
       </div>
     </div>
-</div> -->
-<app-navbar></app-navbar>
-<div class="container" style="margin-top: 5.5em;">
-<div style="display: flex; justify-content: center; position: relative; left: 179px; " >
-
-<div class="galaxy"></div>
-<div id="search-container">
-  <div class="nebula"></div>
-  <div class="starfield"></div>
-  <div class="cosmic-dust"></div>
-  <div class="cosmic-dust"></div>
-  <div class="cosmic-dust"></div>
-
-  <div class="stardust"></div>
-
-  <div class="cosmic-ring"></div>
-
-  <div id="main">
-    <input
-      class="input"
-      name="text"
-      type="text"
-      placeholder="بحث عن الكورس"
-      [(ngModel)]="searchText"
-      (keyup.enter)="filterCourses()"
-    />
-    <div id="input-mask"></div>
-    <div id="cosmic-glow"></div>
-    <div class="wormhole-border"></div>
-    <div id="wormhole-icon">
-      <svg
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-width="2"
-        stroke="#a9c7ff"
-        fill="none"
-        height="24"
-        width="24"
-        viewBox="0 0 24 24"
-      >
-        <circle r="10" cy="12" cx="12"></circle>
-        <path
-          d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-        ></path>
-        <path d="M2 12h20"></path>
-      </svg>
-    </div>
-    <div id="search-icon">
-      <svg
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-width="2"
-        stroke="url(#cosmic-search)"
-        fill="none"
-        height="24"
-        width="24"
-        viewBox="0 0 24 24"
-      >
-        <circle r="8" cy="11" cx="11"></circle>
-        <line y2="16.65" x2="16.65" y1="21" x1="21"></line>
-        <defs>
-          <linearGradient gradientTransform="rotate(45)" id="cosmic-search">
-            <stop stop-color="#a9c7ff" offset="0%"></stop>
-            <stop stop-color="#6e8cff" offset="100%"></stop>
-          </linearGradient>
-        </defs>
-      </svg>
+    <div style="display: flex;">
+      <button class="btn-course" (click)="filterByName('رياضيات')">رياضيات</button>
+      <button class="btn-course" (click)="filterByName('عربي')">اللغة العربية</button>
+      <button class="btn-course" (click)="filterByName('انجليزي')">اللغة الانجليزي</button>
+      <button class="btn-course" (click)="getAllCourses()">الكل</button>
     </div>
   </div>
-</div>
-<div style="display: flex;" >
-  <button class="btn-course" (click)="filterByName('رياضيات')">رياضيات</button>
-  <button class="btn-course" (click)="filterByName('عربي')">اللغة العربية</button>
-  <button class="btn-course" (click)="filterByName('انجليزي')">اللغة الانجليزي</button>
-  <button class="btn-course" (click)="getAllCourses()">الكل</button>
-</div>
-</div>
 
-
-
-  <div class="row justify-content-center" style="padding-top:50px ;">
+  <div class="row justify-content-center" style="padding-top:50px;">
     <div *ngFor="let c of courses; let i = index" class="col-sm-12 col-md-6 col-lg-4 mb-5">
       <div class="card shadow-sm rounded" style="width: 87%;">
         <img src="assets/HomePageImageOne.jpg" class="card-img-top" alt="image not found" style="height: 180px; object-fit: cover;">
         <div class="card-body text-center">
-          <h5 class="card-title mb-4 fs-3 fw-bold">{{ c.name}} المستوى : {{ c.level}} </h5>
+          <h5 class="card-title mb-4 fs-3 fw-bold">{{ c.name }} المستوى : {{ c.level }}</h5>
           <p class="card-text" style="font-size: 0.95rem;">
             {{ c.description }}
           </p>
-          <button 
-            [routerLink]="['/course', c.id]" 
-            routerLinkActive="router-link-active"  
+          <button
+            [routerLink]="['/course', c.id]"
+            routerLinkActive="router-link-active"
             class="btn text-white custom-btn mt-3"
-            style="background-color: #500b85;">
+            style="background-color: #500b85;"
+          >
             ابدأ التعلم الان
           </button>
         </div>

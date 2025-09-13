@@ -1,0 +1,268 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: var(--neutral-very-dark-purple);
+}
+
+.notifications-container {
+  width: 100%;
+  min-height: 100vh; 
+  background: var(--neutral-very-light-purple);
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+  padding-top: 50px; 
+}
+
+.app {
+  width: 700px;
+  margin: 50px auto;
+  background: var(--neutral-white);
+  border-radius: 20px;
+  padding: 15px 25px;
+}
+
+.app .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  direction: rtl;
+}
+
+.header h2 {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.header h2 .title {
+  font-size: 20px;
+}
+
+.header h2 .unread-notification-number {
+  text-align: center;
+  background: var(--primary-purple);
+  color: var(--neutral-white);
+  width: 25px;
+  height: 20px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.header p {
+  color: var(--neutral-dark-purple);
+  cursor: pointer;
+}
+
+.header p:hover {
+  color: var(--primary-purple);
+}
+
+.app .body {
+  margin-top: 15px;
+}
+
+.body .notification {
+  background: var(--neutral-very-light-purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: 10px 0px;
+}
+
+.body .notification:hover {
+  background: var(--neutral-light-purple-1);
+}
+
+.notification-click {
+  animation: notification-click 0.5s ease-in-out forwards;
+}
+.empty-state {
+  background-color: #f2f2f2;        
+  border-radius: 10px;
+  cursor: default;         
+  transition: none;        
+}
+
+
+
+.empty-img {
+  max-width: 200px;
+  opacity: 0.8;
+}
+
+.empty-text {
+  color: #6c757d; 
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+@keyframes notification-click {
+  0% {
+    background: var(--neutral-light-purple-1);
+  }
+
+  50% {
+    background: var(--neutral-light-purple-2);
+  }
+
+  100% {
+    background: none;
+  }
+}
+
+.notification .avatar {
+  width: 8%;
+}
+
+.notification .avatar img {
+  width: 100%;
+}
+
+.notification .text {
+  width: 92%;
+}
+
+.text .text-top p {
+  color: var(--neutral-dark-purple);
+}
+
+.text .text-top p .profil-name {
+  font-weight: 800;
+}
+
+.text .text-top p b {
+  color: var(--neutral-dark-purple);
+  display: inline-block;
+}
+
+.text .text-top p .unread-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0px 0px 1px 7px;
+  border-radius: 50%;
+  background: var(--primary-red);
+}
+
+.text .text-bottom {
+  color: rgba(94, 103, 120, 0.5);
+}
+
+.text .text-top p .b-purple {
+  color: var(--primary-purple);
+}
+
+.notification.readed {
+  background: none;
+}
+
+.notification.private-message .avatar {
+  align-self: start;
+}
+
+.notification.readed .text-bottom p {
+  color: var(--neutral-dark-purple);
+  padding: 20px;
+  border: 1px solid var(--neutral-light-purple-2);
+  margin-top: 10px;
+}
+
+.notification.readed .text p b {
+  display: inline;
+}
+
+.notification.picture .avatar {
+  width: 8%;
+}
+
+.notification.picture .text {
+  width: 84%;
+}
+
+.notification.picture .commented-picture {
+  width: 8%;
+}
+
+.notification.picture .commented-picture img {
+  width: 100%;
+}
+
+@media screen and (max-width: 375px) {
+  * {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 375px;
+  }
+
+  .app {
+    width: 375px;
+    margin: 0 auto;
+    padding: 15px 15px;
+  }
+
+  .notification .avatar {
+    width: 15%;
+  }
+
+  .notification .text {
+    width: 85%;
+  }
+
+  .notification.readed .text-bottom p {
+    font-size: 13px;
+  }
+
+  .notification.picture .avatar {
+    width: 15%;
+  }
+
+  .notification.picture .text {
+    width: 70%;
+  }
+
+  .notification.picture .commented-picture {
+    width: 15%;
+  }
+}
+
+/* .notification-actions {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+/* زر الأيقونة *
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px;
+  transition: color 0.2s;
+} 
+
+.icon-btn:hover {
+  opacity: 0.8;
+}
+*/
+.notification {
+  direction: rtl;
+  position: relative;
+}

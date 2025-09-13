@@ -6,6 +6,8 @@ import { DonationScreenComponent } from './moduls/donation-screen/donation-scree
 import { CoursesComponent } from './moduls/courses/courses.component';
 import { QuestionComponent } from './moduls/question/question.component';
 import { AddVideoToLessonComponent } from './moduls/add-video-to-lesson/add-video-to-lesson.component';
+import { NotificationListComponent } from './moduls/notifications/notifications.component';
+import { ProfilePageComponent } from './moduls/profile-page/profile-page.component';
 
 export const routes: Routes = [
   { path: '', component: MainScreenComponent },
@@ -15,4 +17,6 @@ export const routes: Routes = [
   { path: 'course', component: CoursesComponent },
   { path: 'question/:lessonId', component: QuestionComponent }, // it should be deleted after the configuration
   { path: 'addVideo', component: AddVideoToLessonComponent },
+  {path:'notifications',component:NotificationListComponent},
+  {path:'profile', component: ProfilePageComponent},
 ];
