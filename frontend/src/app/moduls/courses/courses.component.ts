@@ -33,26 +33,32 @@ export class CoursesComponent  {
   }
 
   getAllCourses(){
-    this.coursesService.getAllCourses().subscribe(data => {
-    this.courses = data;
-    this.allCourses = data;
-    for (let i = 0; i < this.courses.length; i++) {
-      this.allCourses[i].level = this.getCourseGroup(i);
+  this.loading = true;
+  this.coursesService.getAllCourses().subscribe({
+    next: (data) => {
+      this.courses = data;
+      this.allCourses = data;
+      for (let i = 0; i < this.courses.length; i++) {
+        this.allCourses[i].level = this.getCourseGroup(i);
+      }
+      this.loading = false;
+    },
+    error: () => {
+      this.loading = false;
     }
-    })
-    this.searchText = '';
-  };
+  });
+  this.searchText = '';
+}
 
   filterCourses() {
   if (this.searchText.trim() === '') {
     this.courses = this.allCourses; 
-  } 
-  else {
+  } else {
     this.courses = this.allCourses.filter(course =>
       course.name.toLowerCase().includes(this.searchText.toLowerCase())
     );
-    this.loadCourses();
   }
+}
 
   loadCourses() {
     this.loading = true;
@@ -66,15 +72,15 @@ export class CoursesComponent  {
       }
     });
   }
-}
+
   getCourseGroup(i: number): number {
     return Math.ceil((i + 1) / 3);
   }
 
-  filterByName(event: any) {
-    this.searchText = event;
-    this.filterCourses();
-  }
+  filterByName(name: string) {
+  this.searchText = name;
+  this.filterCourses();
+}
 
 
 }
