@@ -5,6 +5,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { CoursesService } from '../../services/courses.service';
 import { Course } from '../../models/course.model';
 import { LoaderComponent } from '../loader/loader.component';
+import { VoiceService } from '../../services/voice.service';
 
 @Component({
   selector: 'app-courses',
@@ -24,7 +25,7 @@ export class CoursesComponent {
   //   });
   // }
   loading: boolean = true; 
-  constructor(private coursesService: CoursesService) {
+  constructor(private coursesService: CoursesService,private voiceService: VoiceService) {
     this.loadCourses();
   }
 
@@ -40,5 +41,8 @@ export class CoursesComponent {
       }
     });
   }
-
+  speakCourse(course: any) {
+    const text = course.description;
+    this.voiceService.playText(text, "ar-SA");
+  }
 }

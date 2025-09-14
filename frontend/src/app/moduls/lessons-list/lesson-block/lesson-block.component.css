@@ -29,3 +29,16 @@
   backdrop-filter: blur(6px); /* الغباش */
   background-color: rgba(0, 0, 0, 0.3); /* لون خلفي شفاف مع الغباش */
 }
+
+.speak-btn-gif {
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  display: inline-block;  /* مهم لتظهر داخل النص */
+  vertical-align: middle; /* لمحاذاة مع النص */
+  transition: transform 0.3s ease; /* حركة عند hover فقط */
+}
+
+.speak-btn-gif:hover {
+  transform: scale(1.3); /* تكبير بسيط عند المرور على الصورة */
+}

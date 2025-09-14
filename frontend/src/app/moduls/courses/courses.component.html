@@ -36,6 +36,14 @@
           <p class="card-text" style="font-size: 0.95rem;">
             {{ c.description }}
           </p>
+          <div class="speak-btn-wrapper" style="text-align: left; margin-top: 0.5rem;">
+            <img 
+              src="assets/lottie/speaker.gif" 
+              alt="play" 
+              class="speak-btn-gif"
+              (click)="speakCourse(c)"
+            >
+          </div>
           <button 
             [routerLink]="['/course', c.id]" 
             routerLinkActive="router-link-active"  

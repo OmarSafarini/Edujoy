@@ -14,3 +14,22 @@
   .custom-btn:active {
     transform: scale(0.97);
   }
+  
+  .speak-btn-gif {
+  width: 35px;         /* حجم GIF */
+  height: 35px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* يظهر عند hover على الكارد */
+.card:hover .speak-btn-gif {
+  opacity: 1;
+  transform: scale(1.1); /* تكبير بسيط عند ظهور */
+}
+
+/* تأثير عند hover على GIF نفسه */
+.speak-btn-gif:hover {
+  transform: scale(1.3);
+}

@@ -124,7 +124,7 @@
 }
 
 .notification .avatar {
-  width: 8%;
+  width: 15%;
 }
 
 .notification .avatar img {
@@ -139,8 +139,8 @@
   color: var(--neutral-dark-purple);
 }
 
-.text .text-top p .profil-name {
-  font-weight: 800;
+.text .text-top p .notification-title {
+  font-weight: bold;
 }
 
 .text .text-top p b {
@@ -265,4 +265,16 @@
 .notification {
   direction: rtl;
   position: relative;
+}
+
+.speak-btn-gif {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.speak-btn-gif:hover {
+  transform: scale(1.3);
 }
