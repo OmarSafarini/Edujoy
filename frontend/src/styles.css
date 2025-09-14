@@ -1,21 +1,4 @@
-:root{
-  --bookColor:#6C4AB6;
-  --paperColor1:#f6eee3;
-  --paperColor2:#eee7d7;
-  --ribbonColor:#b6b0b8;
-}
 :root {
-  --neutral-very-dark-blue: hsl(219, 12%, 42%);
-  --neutral-very-light-grayish-blue: hsl(210, 60%, 98%);
-  --neutral-white: #fff;
-  --neutral-dark-grayish-blue: hsl(219, 14%, 63%);
-  --neutral-light-grayish-blue-1: hsl(211, 68%, 94%);
-  --neutral-light-grayish-blue-2: hsl(205, 33%, 90%);
-  --primary-blue: hsl(219, 85%, 26%);
-  --primary-red: hsl(1, 90%, 64%);
-}
-:root {
-  
   --neutral-very-dark-purple: hsl(260, 25%, 40%);
   --neutral-very-light-purple: hsl(260, 40%, 95%);
   --neutral-white: #fff;
@@ -23,5 +6,5 @@
   --neutral-light-purple-1: hsl(260, 50%, 90%);
   --neutral-light-purple-2: #d3c8ea;
   --primary-purple: hsl(260, 70%, 45%);
-  --primary-red: hsl(340, 80%, 65%); /* ممكن تترك الأحمر كما هو أو تعدل حسب الرغبة */
+  --primary-red: hsl(340, 80%, 65%); 
 }

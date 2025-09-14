@@ -79,9 +79,9 @@
     <div *ngFor="let c of courses" class="col-sm-12 col-md-6 col-lg-4 mb-5">
            <div class="card shadow-sm rounded"
              [ngStyle]="{
-    color: 'black',
-    border: 'solid ' + getCourseTheme(c?.id).color + ' 3px'
-  }">
+                color: 'black',
+                border: 'solid ' + getCourseTheme(c?.id).color + ' 3px'
+              }">
         <img [src]="getCourseTheme(c?.id).imageUrl" class="card-img-top" alt="image not found" style="height: 180px; object-fit: cover;">
 
         
@@ -94,13 +94,10 @@
             <img 
               src="assets/lottie/speaker.gif" 
               alt="play" 
-              class="speak-btn-gif"
+              class="speak-btn-gif position-absolute"
               (click)="speakCourse(c)"
             >
           </div>
-          <button 
-            [routerLink]="['/course', c.id]" 
-            routerLinkActive="router-link-active"  ></button>
           <button
             [routerLink]="['/course', c.id]"
             routerLinkActive="router-link-active"

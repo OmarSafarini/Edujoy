@@ -18,7 +18,7 @@ export class ProfilePageComponent implements OnInit {
   @ViewChild('myModal') myModal!: ModalComponent;
   clipImage= 'assets/paperclip-removebg-preview.png';
   tapeImage = 'assets/tape-removebg-preview.png';
-  profileImageUrl = 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png?20200919003010'; // صورة افتراضية
+  profileImageUrl = 'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png?20200919003010'; 
   editMode = false;
   animatedProgress: number = 0;
   //userId: number | undefined;
@@ -49,16 +49,16 @@ export class ProfilePageComponent implements OnInit {
 }
   profile = {
     image: "",
-    name: 'تالا أحمد',
-    email: 'tala@example.com',
+    name: 'اسامة احمد',
+    email: 'Osama@gmail.com',
     city: 'رام الله',
     phone: '0591234567',
     completedCourses: 8,
-  progress: 80,
-  level: 'متقدم',
-  age: 25,
-  bio: 'تعبتتتتتتتتتتتتتتتتتتتتتتتتتت',
-  username: 'tala_ahmed',
+    progress: 80,
+    level: 'متقدم',
+    age: 25,
+    bio: 'بحب أتعلم وألعب، ومتحمس أبدأ أدرس عربي وإنجليزي ورياضيات.',
+    username: 'osama_ahmed',
   };
 
   onImageChange(event: Event) {
@@ -78,7 +78,7 @@ export class ProfilePageComponent implements OnInit {
     this.modalMessage = 'تم تحديث بيانات المستخدم بنجاح';
     this.modalType = 'success';
 
-    this.myModal.open(); // هنا نستخدم الـ ModalComponent مباشرة
+    this.myModal.open();
   }
 
   cancelEdit() {

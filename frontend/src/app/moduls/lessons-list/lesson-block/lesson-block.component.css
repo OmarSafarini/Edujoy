@@ -34,11 +34,11 @@
   width: 38px;
   height: 38px;
   cursor: pointer;
-  display: inline-block;  /* مهم لتظهر داخل النص */
-  vertical-align: middle; /* لمحاذاة مع النص */
-  transition: transform 0.3s ease; /* حركة عند hover فقط */
+  display: inline-block;  
+  vertical-align: middle; 
+  transition: transform 0.3s ease; 
 }
 
 .speak-btn-gif:hover {
-  transform: scale(1.3); /* تكبير بسيط عند المرور على الصورة */
+  transform: scale(1.3); 
 }
