@@ -12,15 +12,16 @@ import { VoiceService } from '../../../services/voice.service';
   standalone: true,
   imports: [CommonModule, RouterModule, AddVideoToLessonComponent,ModalComponent],
   templateUrl: './lesson-block.component.html',
-  styleUrl: './lesson-block.component.css'
+  styleUrl: './lesson-block.component.css',
 })
 export class LessonBlockComponent {
 
    @ViewChild('videoModal') videoModal!: ModalComponent;
 
   @Input() lesson!: Lesson;
+  @Input() theamColor!: string;
 
-  isFormOpen: boolean = false
+  isFormOpen: boolean = false;
   lessonId: number = 0;
   constructor(private voice: VoiceService) {}
 openAddVideoForm(isBack?: boolean) {
