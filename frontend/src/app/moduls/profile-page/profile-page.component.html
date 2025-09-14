@@ -1,0 +1,190 @@
+<app-navbar [profileImageUrl]="profile.image"></app-navbar>
+<div class="container-fluid" style="height: 100vh;">
+  <div class="row h-100">
+    <div class="col-12 col-lg-9 d-flex flex-column justify-content-center align-items-center px-5" style="margin-top: 100px;">
+      
+      <div class="card-cover" style="max-width: 850px; width: 100%;">
+        <div class="card shadow-sm position-relative mb-4">
+          <div class="clip position-absolute" style="top: -71px; left: 20px;">
+            <img [src]="clipImage" alt="paperclip" style="width: 150px; height: auto;">
+          </div>
+          <div class="card-body text-end" style="direction: rtl;">
+            <h4 class="card-title mb-4">معلومات المستخدم</h4>
+
+            <ng-container *ngIf="!editMode; else editForm">
+              <div class="row g-4 px-4">
+                <div class="col-md-6">
+                  <h5 class="shine">الاسم:</h5>
+                  <span class="value">{{ profile.name }}</span>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="shine">اسم المستخدم:</h5>
+                  <span class="value">ls_6</span>
+                </div>
+
+                <div class="col-md-6">
+                  <h5 class="shine">البريد الإلكتروني:</h5>
+                  <span class="value">{{ profile.email }}</span>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="shine">رقم الهاتف:</h5>
+                  <span class="value">{{ profile.phone }}</span>
+                </div>
+
+                <div class="col-md-6">
+                  <h5 class="shine">العمر:</h5>
+                  <span class="value">19</span>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="shine">المدينة:</h5>
+                  <span class="value">{{ profile.city }}</span>
+                </div>
+
+                <div class="col-12">
+                  <h5 class="shine">البايو:</h5>
+                  <span class="value">مدري شو اكتب</span>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-template #editForm>
+              <form (ngSubmit)="saveChanges()" #form="ngForm">
+                <div class="row g-3 text-end">
+                  <div class="col-6">
+                    <label for="fullName" class="form-label">الاسم</label>
+                    <input type="text" id="fullName" class="form-control" required [(ngModel)]="profile.name" name="fullName" #fullName="ngModel" />
+                    <div *ngIf="fullName.invalid && fullName.touched" class="text-danger small">الاسم مطلوب</div>
+                  </div>
+
+                  <div class="col-6">
+                    <label for="username" class="form-label">اسم المستخدم</label>
+                    <input type="text" id="username" class="form-control" required [(ngModel)]="profile.username" name="username" #username="ngModel" />
+                    <div *ngIf="username.invalid && username.touched" class="text-danger small">اسم المستخدم مطلوب</div>
+                  </div>
+
+                  <div class="col-6">
+                    <label for="email" class="form-label">البريد الإلكتروني</label>
+                    <input type="email" id="email" class="form-control" required [(ngModel)]="profile.email" name="email" #email="ngModel" />
+                    <div *ngIf="email.invalid && email.touched" class="text-danger small">الإيميل غير صالح</div>
+                  </div>
+
+                  <div class="col-6">
+                    <label for="city" class="form-label">المدينة</label>
+                    <input type="text" id="city" class="form-control" required [(ngModel)]="profile.city" name="city" #city="ngModel" />
+                    <div *ngIf="city.invalid && city.touched" class="text-danger small">المدينة مطلوبة</div>
+                  </div>
+
+                  <div class="col-6">
+                    <label for="phone" class="form-label">رقم الهاتف</label>
+                    <input type="text" id="phone" class="form-control" required [(ngModel)]="profile.phone" name="phone" #phone="ngModel" />
+                    <div *ngIf="phone.invalid && phone.touched" class="text-danger small">رقم الهاتف مطلوب</div>
+                  </div>
+
+                  <div class="col-6">
+                    <label for="age" class="form-label">العمر</label>
+                    <input type="text" id="age" class="form-control" required [(ngModel)]="profile.age" name="age" #age="ngModel" />
+                    <div *ngIf="age.invalid && age.touched" class="text-danger small">العمر مطلوب</div>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="bio" class="form-label">البايو</label>
+                    <textarea id="bio" class="form-control" rows="3" required [(ngModel)]="profile.bio" name="bio" #bio="ngModel"></textarea>
+                    <div *ngIf="bio.invalid && bio.touched" class="text-danger small">البايو مطلوب</div>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4 gap-2">
+                  <button type="submit" class="btn btn-success me-2" [disabled]="form.invalid">حفظ</button>
+                  <button type="button" class="btn btn-secondary" (click)="cancelEdit()">إلغاء</button>
+                </div>
+              </form>
+            </ng-template>
+
+            <div class="d-flex justify-content-end mt-2">
+              <button class="btn btn-outline-primary" *ngIf="!editMode;" (click)="editMode = true">تعديل</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card shadow-sm position-relative" style="margin-top: 90px;">
+  <div class="clip position-absolute" style="top: -50px; left: 35%;">
+    <img [src]="tapeImage" alt="tape" style="width: 250px; height: auto;">
+  </div>
+  <div class="card-body text-end" style="direction: rtl;">
+    <h4 class="card-title mb-3">المستوى التحصيلي</h4>
+
+    <div class="row text-center">
+      <div class="col-md-4 mb-4 d-flex flex-column align-items-center">
+  <h6 class="mb-4">عدد الكورسات المكتملة:</h6>
+  <div class="courses-box">
+    {{ profile.completedCourses }}
+  </div>
+</div>
+
+
+     <div class="col-12 col-md-4 mx-auto">
+  <h6 class="mb-4 text-center">المستوى الحالي:</h6>
+
+  <div class="d-flex flex-column align-items-center justify-content-center text-center">
+    <div 
+      class="level-box mb-3" 
+      [ngClass]="{'active': profile.level === 'مبتدئ'}">
+      مبتدئ
+    </div>
+    <div 
+      class="level-box mb-3" 
+      [ngClass]="{'active': profile.level === 'متوسط'}">
+      متوسط
+    </div>
+    <div 
+      class="level-box" 
+      [ngClass]="{'active': profile.level === 'متقدم'}">
+      متقدم
+    </div>
+  </div>
+</div>
+
+
+
+      <div class="col-md-4 mb-4 d-flex flex-column align-items-center justify-content-center">
+        <h6 class="mb-4">نسبة الإنجاز</h6>
+        <div class="progress-circle"
+          [ngStyle]="{
+       '--progress': animatedProgress + '%',
+       '--color': '#6a11cb'
+     }">
+        </div>
+          <span class="progress-number mt-3">{{ animatedProgress }}%</span>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+    </div>
+
+    <div class="sidebar-fixed col-12 col-lg-3 d-flex flex-column align-items-center p-0 sidebar-purple">
+  <div class="w-100 h-100 position-relative">
+
+    <div class="top-purple-pattern"></div>
+
+    <div class="profile-section d-flex flex-column align-items-center">
+      <div class="profile-pic">
+        <img [src]="profile.image ? profile.image : profileImageUrl" alt="Profile Image" />
+      </div>
+      <label for="imageInput" 
+             class="btn btn-primary btn-sm mt-3"
+             style="cursor: pointer; width: 180px; text-align: center;">
+        تغيير الصورة
+      </label>
+      <input type="file" id="imageInput" (change)="onImageChange($event)" hidden />
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
