@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-6">
                   <h5 class="shine">اسم المستخدم:</h5>
-                  <span class="value">ls_6</span>
+                  <span class="value">{{profile.username}}</span>
                 </div>
 
                 <div class="col-md-6">
@@ -33,7 +33,7 @@
 
                 <div class="col-md-6">
                   <h5 class="shine">العمر:</h5>
-                  <span class="value">19</span>
+                  <span class="value">{{profile.age}}</span>
                 </div>
                 <div class="col-md-6">
                   <h5 class="shine">المدينة:</h5>
@@ -42,7 +42,7 @@
 
                 <div class="col-12">
                   <h5 class="shine">البايو:</h5>
-                  <span class="value">مدري شو اكتب</span>
+                  <span class="value">{{profile.bio}}</span>
                 </div>
               </div>
             </ng-container>
@@ -188,3 +188,8 @@
 
   </div>
 </div>
+<app-modal #myModal
+  [title]="'تم الحفظ'"
+  [message]="'!تم حفظ البيانات بنجاح'"
+  [type]="'success'">
+</app-modal>

@@ -18,31 +18,37 @@
 </div>
 
       <ng-container *ngIf="!loading">
-      <div *ngFor="let notification of notifications" class="notification" [ngClass]="{ 'readed': notification.read_at }">
+      <div *ngFor="let notification of notifications" class="notification d-flex justify-content-between" [ngClass]="{ 'readed': notification.read_at }">
         <div class="avatar">
           <img [src]="getNotificationImage(notification.title)"  alt="User" />
         </div>
         <div class="text">
           <div class="text-top">
             <p>
-              <span class="profil-name">{{ notification.title }}</span>
+              <span class="notification-title">{{ notification.title }}</span>
               <!-- <span *ngIf="notification.read_status === 'unread'" class="unread-dot"></span> -->
             </p>
+            
           </div>
           <div class="text-bottom">
             <p>{{ notification.body }}</p>
             <small>{{ notification.created_at | date:'short' }}</small>
           </div>
           <!-- <div class="notification-actions">
-    <button *ngIf="!notification.read_at" class="icon-btn text-primary" (click)="markAsRead(notification.id)">
-      <i class="bi bi-envelope-open"></i>
-    </button>
-    <button class="icon-btn text-danger" (click)="deleteNotification(notification.id)">
-      <i class="bi bi-trash3"></i>
-    </button>
-  </div> -->
-
+            <button *ngIf="!notification.read_at" class="icon-btn text-primary" (click)="markAsRead(notification.id)">
+              <i class="bi bi-envelope-open"></i>
+            </button>
+            <button class="icon-btn text-danger" (click)="deleteNotification(notification.id)">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </div> -->
         </div>
+        <img 
+            src="assets/lottie/speaker.gif" 
+            alt="play" 
+            class="speak-btn-gif"
+            (click)="speakNotification(notification)"
+          >
       </div>
       </ng-container>
     </div>

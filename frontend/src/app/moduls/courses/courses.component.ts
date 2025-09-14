@@ -6,6 +6,7 @@ import { CoursesService } from '../../services/courses.service';
 import { Course } from '../../models/course.model';
 import { FormsModule } from "@angular/forms";
 import { LoaderComponent } from '../loader/loader.component';
+import { VoiceService } from '../../services/voice.service';
 
 interface CourseTheme {
   color: string;
@@ -34,7 +35,7 @@ export class CoursesComponent  {
   //   });
   // }
   loading: boolean = true; 
-  constructor(private coursesService: CoursesService) {
+  constructor(private coursesService: CoursesService,private voiceService: VoiceService) {
     this.getAllCourses();
   }
 
@@ -77,6 +78,10 @@ export class CoursesComponent  {
         this.loading = false; 
       }
     });
+  }
+  speakCourse(course: any) {
+    const text = course.description;
+    this.voiceService.playText(text, "ar-SA");
   }
 
   getCourseTheme(courseId: number | undefined): CourseTheme {
