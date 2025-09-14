@@ -13,3 +13,15 @@
     background-color: #ffffff;
 
 }
+
+.overlay-image {
+  object-fit: cover;    /* تغطي العنصر بالكامل مع الاقتصاص */
+  opacity: 0.5;         /* ضبط الشفافية */
+  pointer-events: none; /* يسمح بالنقر على النص فوقها */
+  z-index: 1;
+}
+
+h2 {
+  position: relative;
+  z-index: 2;            /* ليظهر النص فوق الصورة */
+}
