@@ -5,6 +5,8 @@ import { LessonsService } from '../../services/lessons.service';
 import { CommonModule } from '@angular/common';
 import { AddLessonToCourseComponent } from '../add-lesson-to-course/add-lesson-to-course.component';
 import { ActivatedRoute } from '@angular/router';
+import { LoaderComponent } from '../loader/loader.component';
+
 
 interface CourseTheme {
   color: string;
@@ -13,7 +15,7 @@ interface CourseTheme {
 
 @Component({
   selector: 'app-lessons-list',
-  imports: [LessonBlockComponent, CommonModule, AddLessonToCourseComponent],
+  imports: [LessonBlockComponent, CommonModule, AddLessonToCourseComponent, LoaderComponent],
   templateUrl: './lessons-list.component.html',
   styleUrl: './lessons-list.component.css',
 })

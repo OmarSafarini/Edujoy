@@ -1,7 +1,15 @@
-<div dir="rtl" class="video-layout p-0">
+<div dir="rtl" class="video-layout p-0 position-fixed top-0 start-0 w-100">
+  <div *ngIf="!course">
+    <app-loader></app-loader>
+  </div>
+
   <!-- Sidebar -->
   <div class="sidebar d-none d-md-block">
-    <app-sidebar [course]="course" [selectedVideoId]="videoId"></app-sidebar>
+    <app-sidebar
+      [course]="course"
+      [selectedVideoId]="videoId"
+      [theamColor]="getCourseTheme(course.id).color"
+    ></app-sidebar>
   </div>
 
   <div class="d-block d-md-none">
@@ -40,27 +48,35 @@
   </div>
 
   <!-- Video -->
-  <div class="main-video p-3 mt-5">
-    <div class="d-flex align-items-center gap-2 mb-2">
+  <div class="main-video px-3">
+    <div class="d-flex align-items-center gap-2">
       <i
         class="bi bi-play-btn"
-        style="font-size: 24px"
+        [ngStyle]="{ color: getCourseTheme(course.id).color }"
+        style="font-size: 32px"
       ></i>
       <h2 style="font-size: 22px; margin: 0">{{ videoTitle }}</h2>
     </div>
 
-    <hr style="border-top: 2px solid #dee2e6" />
+    <hr class="p-0 my-2" style="border-top: 2px solid #dee2e6" />
 
     <div class="video-container">
       <iframe
-  *ngIf="sanitizedVideoUrl"
-  width="100%"
-  height="500"
-  [src]="sanitizedVideoUrl"
-  frameborder="0"
-  allowfullscreen>
-</iframe>
+        *ngIf="sanitizedVideoUrl"
+        width="100%"
+        height="500"
+        [src]="sanitizedVideoUrl"
+        frameborder="0"
+        allowfullscreen
+      >
+      </iframe>
+    </div>
 
+    <div class="py-5">
+      <h3 style="font-size: 18px">الوصف والمصادر</h3>
+      <div class="card p-1" style="background-color: rgb(239, 239, 239)">
+        <div style="font-size: 16px">لا يوجد وصف</div>
+      </div>
     </div>
   </div>
 </div>

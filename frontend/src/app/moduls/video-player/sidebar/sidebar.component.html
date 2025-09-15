@@ -1,26 +1,55 @@
-<div class="sidebar py-5">
+<div class="sidebar">
   <h3 class="pt-3">{{ course?.name }}</h3>
   <div class="sidebar-body">
     <div *ngFor="let lesson of course?.lessons">
       <hr />
-      <strong> الدرس: {{ lesson.name }}</strong>
-      <ul>
-
+      <strong> {{ lesson.name }}</strong>
+      <ul class="mx-4" style="list-style: none; padding: 0; margin: 0">
         <li *ngIf="!lesson.videos || lesson.videos.length === 0">
           <em class="text-muted">لا يوجد فيديوهات لهذا الدرس</em>
         </li>
 
         <li *ngFor="let video of lesson.videos">
           <a
-            class="video-item p-3 my-3"
+            class="video-item p-3 my-3 rounded d-flex justify-content-start align-items-center"
+            [ngStyle]="
+              video.id === selectedVideoId
+                ? {
+                    color: 'white',
+                    backgroundColor: theamColor,
+                    transform: 'translateX(-10px)',
+                    borderRight: 'solid 10px #ffff'
+                  }
+                : {
+                  borderRight: 'solid 10px ' + theamColor,
+                }
+            "
             [class.active]="video.id === selectedVideoId"
             [routerLink]="['/course', course?.id, 'video', video.id]"
           >
-            {{ video.title ? video.title : 'الفيديو غير متوفر' }}
-
+            <div class="complete-tag ms-3"></div>
+            {{ video.title ? video.title : "الفيديو غير متوفر" }}
           </a>
         </li>
+        <li></li>
       </ul>
+
+      <div class="mx-4">
+
+        <a
+          class="video-item p-2 my-3  rounded d-flex justify-content-start align-items-center"
+          [ngStyle]="{}"
+          [routerLink]="['/question', lesson.id]"
+        >
+          <div class="complete-tag ms-3"></div>
+          إبدًا الإختبار
+        </a>
+
+      </div>
+
+
     </div>
+
+    <div class="py-5"></div>
   </div>
 </div>

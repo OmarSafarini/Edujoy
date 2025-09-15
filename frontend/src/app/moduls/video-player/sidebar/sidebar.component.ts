@@ -13,5 +13,7 @@ import {CommonModule} from '@angular/common';
 export class SidebarComponent {
   @Input() course?:Course;
   @Input() selectedVideoId?:number;
+  @Input() theamColor!: string;
+
 
 }
