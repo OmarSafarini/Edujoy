@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AddLessonToCourseComponent } from '../add-lesson-to-course/add-lesson-to-course.component';
 import { ActivatedRoute } from '@angular/router';
 import { LoaderComponent } from '../loader/loader.component';
-
+import { ModalComponent } from '../modal/modal.component';
 interface CourseTheme {
   color: string;
   imageUrl: string;
@@ -14,7 +14,7 @@ interface CourseTheme {
 
 @Component({
   selector: 'app-lessons-list',
-  imports: [LessonBlockComponent, CommonModule, AddLessonToCourseComponent, LoaderComponent],
+  imports: [LessonBlockComponent, CommonModule, AddLessonToCourseComponent, LoaderComponent , ModalComponent],
   templateUrl: './lessons-list.component.html',
   styleUrl: './lessons-list.component.css',
 })
