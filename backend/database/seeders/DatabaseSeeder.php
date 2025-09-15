@@ -9,6 +9,8 @@ use App\Models\Course;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\CourseSeeder;
 use Database\Seeders\LessonSeeder;
+use Database\Seeders\QuestionSeeder;
+use Database\Seeders\AnswerSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +31,8 @@ class DatabaseSeeder extends Seeder
         CourseSeeder::class,
         LessonSeeder::class,
         VideoSeeder::class,
+        QuestionSeeder::class,
+        AnswerSeeder::class
     ]);
     }
 }
