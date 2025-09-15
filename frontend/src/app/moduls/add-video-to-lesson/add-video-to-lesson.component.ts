@@ -14,6 +14,7 @@ export class AddVideoToLessonComponent implements OnInit {
   @Input() lessonId!: number;
 
   @Output() onBack = new EventEmitter<boolean>();
+  @Output() videoAdded = new EventEmitter<boolean>();
 
   goBack() {
     this.onBack.emit(true);
@@ -45,14 +46,17 @@ export class AddVideoToLessonComponent implements OnInit {
         next: (response) => {
           console.log('Video Added succeccfully:', response);
           this.videoForm.reset();
+          this.videoAdded.emit(true);
         },
         error: (error) => {
           console.error('Error:', error);
-          alert('Added Fiald');
+          //alert('Added Fiald');
+          this.videoAdded.emit(false);
         },
       });
     } else {
-      alert('Invalid Form');
+      //alert('Invalid Form');
+      this.videoAdded.emit(false);
     }
   }
 }

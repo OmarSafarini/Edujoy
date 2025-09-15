@@ -28,3 +28,16 @@
   backdrop-filter: blur(6px);
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.speak-btn-gif {
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  display: inline-block;  
+  vertical-align: middle; 
+  transition: transform 0.3s ease; 
+}
+
+.speak-btn-gif:hover {
+  transform: scale(1.3); 
+}

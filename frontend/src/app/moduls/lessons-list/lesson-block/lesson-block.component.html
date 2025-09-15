@@ -6,7 +6,8 @@
   }"
 >
   <div class="d-flex justify-content-between">
-    <a
+    <div class="d-flex justify-content-start">
+      <a
       class="btn lesson-collapse"
       data-bs-toggle="collapse"
       [attr.href]="'#collapse' + lesson.id"
@@ -18,7 +19,15 @@
       {{ lesson.name }}
       <i class="bi bi-chevron-down"></i>
     </a>
-
+    <!-- GIF الصوت قبل السهم -->
+    <img 
+      src="assets/lottie/speaker.gif" 
+      alt="play" 
+      class="speak-btn-gif ms-2"
+      (click)="speakLessonTitle(lesson)"
+    >
+    </div>
+    
     <a class="btn" (click)="openAddVideoForm()">
       <i class="bi bi-plus" style="font-size: 20px"></i>
     </a>
@@ -93,3 +102,5 @@
     (onBack)="openAddVideoForm($event)"
   ></app-add-video-to-lesson>
 </div>
+
+<app-modal #videoModal></app-modal>

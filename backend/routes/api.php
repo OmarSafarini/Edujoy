@@ -4,7 +4,10 @@ use App\Http\Controllers\CourseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\ProgressController;use App\Http\Controllers\VoiceController;
+use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\VoiceController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\LessonController;
 
 Route::post('/tts', [VoiceController::class, 'speak']);
 

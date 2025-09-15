@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LessonBlockComponent } from './lesson-block/lesson-block.component';
 import { Course } from '../../models/course.model';
 import { LessonsService } from '../../services/lessons.service';
@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { AddLessonToCourseComponent } from '../add-lesson-to-course/add-lesson-to-course.component';
 import { ActivatedRoute } from '@angular/router';
 import { LoaderComponent } from '../loader/loader.component';
-
 
 interface CourseTheme {
   color: string;
@@ -19,8 +18,12 @@ interface CourseTheme {
   templateUrl: './lessons-list.component.html',
   styleUrl: './lessons-list.component.css',
 })
-export class LessonsListComponent implements OnInit {
-  course!: Course;
+export class LessonsListComponent implements OnInit
+{
+  @ViewChild('lessonModal') lessonModal!: ModalComponent;
+
+
+  course !: Course;
   courseId: number = 0;
 
   isLessonFormOpen: boolean = false;
@@ -43,36 +46,28 @@ export class LessonsListComponent implements OnInit {
     this.isLessonFormOpen = !this.isLessonFormOpen;
   }
 
-  // getCourseTheme(courseId: number | undefined): CourseTheme {
-  //   if (!courseId) {
-  //     return {
-  //       color: 'white',
-  //       imageUrl:
-  //         '',
-  //     };
-  //   }
+  loadCourse() {
+  this.lessonsService.getCourseWithLessons(this.courseId).subscribe({
+    next: (res: any) => {
+      this.course = res[0];
+    },
+  });
+}
 
-  //   if (courseId === 1 || courseId === 4 || courseId === 7) {
-  //     return {
-  //       color: '#a51212ff',
-  //       imageUrl:
-  //         'https://images.pexels.com/photos/33770555/pexels-photo-33770555.jpeg',
-  //     };
-  //   } else if (courseId === 2 || courseId === 5 || courseId === 8) {
-  //     return {
-  //       color: '#1d44d1ff',
-  //       imageUrl:
-  //         'https://images.pexels.com/photos/7335412/pexels-photo-7335412.jpeg',
-  //     };
-  //   } else {
-  //     return {
-  //       color: 'rgba(205, 208, 0, 0.87)',
-  //       imageUrl:
-  //         'https://images.pexels.com/photos/7111523/pexels-photo-7111523.jpeg',
-  //     };
-  //   }
-  // }
-
+  onLessonAdded(success: boolean) {
+    if (success) {
+      this.lessonModal.title = 'نجاح';
+      this.lessonModal.message = 'تمت إضافة الدرس بنجاح!';
+      this.lessonModal.type = 'success';
+      this.loadCourse(); // لتحديث قائمة الدروس
+    } else {
+      this.lessonModal.title = 'فشل';
+      this.lessonModal.message = 'حدث خطأ أثناء إضافة الدرس!';
+      this.lessonModal.type = 'error';
+    }
+    this.lessonModal.open();
+  }
+  
   getCourseTheme(courseId: number | undefined): CourseTheme {
     if (!courseId) {
       return {

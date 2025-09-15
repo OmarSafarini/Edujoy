@@ -4,6 +4,7 @@ import { Notification } from '../../models/notification.model';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { LoaderComponent } from '../loader/loader.component';
+import { VoiceService } from '../../services/voice.service';
 
 @Component({
   selector: 'app-notifications',
@@ -15,7 +16,7 @@ export class NotificationListComponent implements OnInit {
   emptyImage = 'assets/emptyNotifications.png'; // مسار الصورة الفارغة
   notifications: Notification[] = [];
   loading: boolean = false;
-  constructor(private notificationService: NotificationService) {}
+  constructor(private notificationService: NotificationService,private voice:VoiceService) {}
 
   ngOnInit(): void {
     this.loadNotifications();
@@ -78,4 +79,9 @@ getNotificationImage(title: string): string {
       return 'assets/defaultNotification.png'; // صورة افتراضية في حال لم يتطابق
   }
 }
+speakNotification(notification: any) {
+  const text = `${notification.title}. ${notification.body}`;
+  this.voice.playText(text, "ar-SA");
+}
+
 }
