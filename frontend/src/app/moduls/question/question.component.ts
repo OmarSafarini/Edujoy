@@ -25,6 +25,7 @@ export class QuestionComponent {
     this.lessonId = this.route.snapshot.params['lessonId'];
     this.questionService.getQuestionsWithAnswers(this.lessonId).subscribe(data => {
       this.questionData = data;
+      console.log(data);
       this.lessonHeader = this.questionData.name;
       this.questions = this.questionData.questions.flatMap((q: any) =>
         q.answers.map((a: any) => ({
