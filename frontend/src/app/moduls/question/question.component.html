@@ -19,14 +19,14 @@
         </div>
         <hr class="question-separator"/>
 
-        <div class="text-end mb-5">
+        <!-- <div class="text-end mb-5">
           <button
             class="btn fw-bolder rounded-4"
             style="background:linear-gradient(135deg, #a464d5, #2c1e3e); color: white; font-size: 0.94em; padding: 0.6em 1.4em;"
             (click)="openModal()">
             + إضافة سؤال
           </button>  
-        </div>  
+        </div>   -->
 
         <div id="game" *ngFor="let group of questionsGrouped; let i = index" class="d-flex flex-column align-items-center">
           <h2 id="question-header">{{ group[0].question_body }}</h2>
